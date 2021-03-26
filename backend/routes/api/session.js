@@ -41,6 +41,7 @@ const validateLogin = [
       });
     }),
   );
+  
   router.delete(
     '/',
     (_req, res) => {
