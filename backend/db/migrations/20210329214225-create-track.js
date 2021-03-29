@@ -9,13 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100),
+        allowNull: false
       },
       artist: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(70),
+        allowNull: false
       },
       album: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100),
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

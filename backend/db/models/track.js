@@ -1,12 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Track = sequelize.define('Track', {
-    title: DataTypes.STRING,
-    artist: DataTypes.STRING,
-    album: DataTypes.STRING
+    title: DataTypes.STRING(100),
+    artist: DataTypes.STRING(70),
+    album: DataTypes.STRING(100)
   }, {});
   Track.associate = function(models) {
-    // associations can be defined here
+    Track.hasMany(models.Line, {foreignKey: trackId })
   };
   return Track;
 };

@@ -8,14 +8,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      order - num: {
-        type: Sequelize.INTEGER
+      ordernum: {
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
-      line - text: {
-        type: Sequelize.STRING
+      linetext: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       trackId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{ model: 'Tracks'},
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
