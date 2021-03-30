@@ -23,6 +23,7 @@ router.get('/tracks//:id(\\d+)', asyncHandler( async (req, res) => {
             }
         }
     })
+    return res.json(track);
 }))
 
 module.exports = router;
