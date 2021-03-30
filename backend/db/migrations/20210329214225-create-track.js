@@ -10,7 +10,7 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING(100),
-        allowNull: falses
+        allowNull: false
       },
       artist: {
         type: Sequelize.STRING(70),

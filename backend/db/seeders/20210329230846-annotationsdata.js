@@ -16,14 +16,14 @@ module.exports = {
         {
           body: 'test test test',
           userId: 1,
-          lineId: 0,
+          lineId: 1,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           body: 'test test test tes test test test test test test test',
           userId: 1,
-          lineId: 1,
+          lineId: 2,
           createdAt: new Date(),
           updatedAt: new Date()
         },

@@ -65,7 +65,9 @@ module.exports = {
         {
           ordernum: 0,
           linetext: 'test test test test test test',
-          trackId: 3
+          trackId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           ordernum: 1,
