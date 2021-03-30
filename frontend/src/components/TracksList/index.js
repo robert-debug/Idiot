@@ -8,11 +8,13 @@ import { getTracks } from '../../store/track';
 function TrackList () {
     const dispatch = useDispatch();
     const tracks = useSelector(state => {
-        return state.track.list.map(trackId=>state.track[trackId])
+        console.log(state.track.list)
+        return state.track.list
     })
     useEffect(()=>{
         dispatch(getTracks());
     },[dispatch]);
+    console.log(tracks)
     if (!tracks) return null;
 
     return (
@@ -21,7 +23,8 @@ function TrackList () {
                 return (
                     <NavLink key={track.id} to={`/tracks/${track.id}`}>
                         <div className='track'>
-                            {track.title}
+                            <h2 className='title'>{track.title}</h2>
+                            <p className='artist'>{track.artist}</p>
                         </div>
                     </NavLink>
                 )

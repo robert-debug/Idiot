@@ -1,8 +1,8 @@
 const LOAD = 'tracks/LOAD'
 const ONE = 'tracks/ONE'
-const load = tracks => ({
+const load = list => ({
     type: LOAD,
-    tracks
+    list
 })
 
 const one = track => ({
@@ -12,10 +12,10 @@ const one = track => ({
 
 export const getTracks = () => async dispatch => {
     const response = await fetch('/api/tracks');
-
+    console.log(response)
     if(response.ok) {
-        const trackList = await response.json();
-        dispatch(load(trackList));
+        const list = await response.json();
+        dispatch(load(list));
     }
 };
 
@@ -37,13 +37,13 @@ const trackReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD: {
             const allTracks = {};
-            action.tracks.forEach(track => {
+            action.list.forEach(track => {
                 allTracks[track.id] = track;
             });
             return {
                 ...allTracks,
                 ...state,
-                tracks: action.tracks
+                list: action.list
             }
         }
         case ONE: {

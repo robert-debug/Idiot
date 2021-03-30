@@ -4,12 +4,13 @@ const { Track, Comment, Line, Annotation } = require('../../db/models');
 
 const router = express.Router();
 
-router.get('/tracks', asyncHandler( async (req, res) => {
+router.get('/', asyncHandler( async (req, res) => {
     const tracks = await Track.findAll();
+    //console.log(tracks)
     return res.json(tracks)
 }));
 
-router.get('/tracks//:id(\\d+)', asyncHandler( async (req, res) => {
+router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
     const id = await req.params.id;
     const track = await Track.findByPK(id, 
         {
