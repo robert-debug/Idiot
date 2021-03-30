@@ -2,13 +2,13 @@
 Name pending...
 ## Feature List
 
-## Features for the minimum viable product include:
+### Features for the minimum viable product include:
 * Hosting on Heroku
 * New Account Creation, Login and Logout
 * Tracks with lyrics
 * CRUD Annotations of lyrics
 * CRUD Comments on Tracks
-* Future Features
+### Future Features
 * Likes
 * Search by Track name, Artist, and lyrics
 * Artist Pages
