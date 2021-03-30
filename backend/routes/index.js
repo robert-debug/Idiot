@@ -2,9 +2,23 @@
 const express = require('express');
 const router = express.Router();
 const apiRouter = require('./api');
-
+// const { Track, Annotation, Line, Comment } = require('../db/models');
 router.use('/api', apiRouter);
-
+//Test Route for Associations
+// router.get('/hello/world', async function(req, res) {
+//   const tracks = await Track.findAll(
+//     {
+//       include: {
+//         model: Line,
+//         include:{
+//           model: Annotation,
+//           include: Comment
+//         }
+//       }
+//     });
+//   console.log('-----------------', tracks)
+//   res.send(tracks);
+// });
 // Static routes
 // Serve React build files in production
 if (process.env.NODE_ENV === 'production') {
