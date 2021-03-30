@@ -14,7 +14,19 @@ module.exports = {
     */
       return queryInterface.bulkInsert('Annotations', [
         {
-          
+          body: 'test test test',
+          userId: 1,
+          lineId: 0
+        },
+        {
+          body: 'test test test tes test test test test test test test',
+          userId: 1,
+          lineId: 1
+        },
+        {
+          body: 'test test test',
+          userId: 1,
+          lineId: 3
         }
       ], {});
   },
@@ -27,5 +39,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
+      return queryInterface.bulkDelete('Annotations', null, {});
   }
 };

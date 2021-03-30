@@ -12,6 +12,13 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+      return queryInterface.bulkInsert('Comments', [
+        {
+          body: 'test test test',
+          userId: 1,
+          annotationId: 1
+        }
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -22,5 +29,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
+      return queryInterface.bulkDelete('Comments', null, {});
   }
 };
