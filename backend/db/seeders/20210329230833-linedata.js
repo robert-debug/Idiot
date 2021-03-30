@@ -16,37 +16,51 @@ module.exports = {
         {
           ordernum: 0,
           linetext: 'test test test test test test',
-          trackId: 1
+          trackId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           ordernum: 1,
           linetext: 'test test test test test test',
-          trackId: 1
+          trackId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           ordernum: 2,
           linetext: 'test test test test test test',
-          trackId: 1
+          trackId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           ordernum: 3,
           linetext: 'test test test test test test',
-          trackId: 1
+          trackId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           ordernum: 0,
           linetext: 'test test test test test test',
-          trackId: 2
+          trackId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           ordernum: 1,
           linetext: 'test test test test test test',
-          trackId: 2
+          trackId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           ordernum: 2,
           linetext: 'test test test test test test',
-          trackId: 2
+          trackId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           ordernum: 0,
@@ -56,7 +70,9 @@ module.exports = {
         {
           ordernum: 1,
           linetext: 'test test test test test test',
-          trackId: 3
+          trackId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
     ], {});
   },

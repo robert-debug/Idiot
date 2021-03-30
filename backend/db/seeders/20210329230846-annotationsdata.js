@@ -16,17 +16,23 @@ module.exports = {
         {
           body: 'test test test',
           userId: 1,
-          lineId: 0
+          lineId: 0,
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           body: 'test test test tes test test test test test test test',
           userId: 1,
-          lineId: 1
+          lineId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           body: 'test test test',
           userId: 1,
-          lineId: 3
+          lineId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
       ], {});
   },

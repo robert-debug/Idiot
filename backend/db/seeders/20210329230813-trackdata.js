@@ -16,17 +16,23 @@ module.exports = {
         {
           title: 'No Time to Test',
           artist: 'Johnny Test and the Testerinos',
-          album: 'Never Mind the Tests' 
+          album: 'Never Mind the Tests',
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           title: 'Lost in the Test',
           artist: 'The Test',
-          album: 'London Testing'
+          album: 'London Testing',
+          createdAt: new Date(),
+          updatedAt: new Date()
         },
         {
           title: 'Bad Test',
           artist: 'Lady Test',
-          album: 'Test Monster'
+          album: 'Test Monster',
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
     ], {});
   },

@@ -16,7 +16,9 @@ module.exports = {
         {
           body: 'test test test',
           userId: 1,
-          annotationId: 1
+          annotationId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
     ], {});
   },
