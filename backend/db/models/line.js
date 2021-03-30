@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   Line.associate = function(models) {
     // associations can be defined here
     Line.belongsTo(models.Track, { foreignKey: 'trackId'}),
-    Line.hasOne(models.Annotations, {foreignKey: 'lineId'})
+    Line.hasOne(models.Annotation, {foreignKey: 'lineId'})
   };
   return Line;
 };
