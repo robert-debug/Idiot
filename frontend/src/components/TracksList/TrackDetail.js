@@ -11,17 +11,22 @@ function TrackDetail ({ track }) {
     let annotation= {};
     // let comment = {};
     
-    const displayComments = event => {
-        return null;
-    }
-    const displayAnnotation = event => {
-        let lineId = event.currentTarget.dataset.line_id;
+    const displayAnnotation = lineId => {
         let clickedLine = lines[lineId]
         let clickedAnnotation = clickedLine.Annotation;
         if (!clickedAnnotation) return null; //eventually returns annotation form or login prompt
         console.log(clickedAnnotation)
         annotation[clickedAnnotation.id] = clickedAnnotation;
-        return (<div key={clickedAnnotation.id} data-annotation_id={clickedAnnotation.id} className='annotation'>{clickedAnnotation.body}</div>)
+        return (
+            <div className='ann+comment'>
+                <div className='annotation'>{clickedAnnotation.body}</div>
+                {clickedAnnotation.Comments.map(comment =>{
+                    return(
+                        <div key={comment.id} className='comments'>{comment.body}</div>
+                    )
+                }) }
+            </div>
+            )
         
     }
     const displayLines = track => {
@@ -31,10 +36,15 @@ function TrackDetail ({ track }) {
         console.log(lines)
         return(
             <div className='lyrics'>
-             {
-             track.Lines.map( line => {
+             {track.Lines.map( line => {
                 return (
+                    <>
                     <p key={line.id} data-line_id={line.id} onClick={clickAnnotation} className='line'>{line.linetext}</p>
+                    {
+                        annotationVisibility?
+                        displayAnnotation(line.id) : null
+                    }
+                    </>
                 )}
             )}
             </div>
