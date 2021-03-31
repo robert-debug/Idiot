@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import sessionReducer from './session'
 import trackReducer from './track';
 import annotationReducer from './annotation';
+import commentReducer from './comment';
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   track: trackReducer,
   annotation: annotationReducer,
+  comment: commentReducer
 });
 
 let enhancer;

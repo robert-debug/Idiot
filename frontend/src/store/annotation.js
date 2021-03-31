@@ -49,7 +49,7 @@ export const updateAnnotation = data => async dispatch => {
     }
 }
 
-export const deleteAnnotation = annotationId => async dispatch => {
+export const removeAnnotation = annotationId => async dispatch => {
     const response = await fetch(`/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:${annotationId}`, {
         method: 'delete'
     })
@@ -65,7 +65,7 @@ const annotationReducer = (state = initialState, action) => {
         case ANNOTATION_CRU: {
             return {
                 ...state,
-                [action.annotation.id] : annotation
+                [action.annotation.id] : action.annotation
             }
         }
         case ANNOTATION_D: {

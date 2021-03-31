@@ -1,0 +1,81 @@
+import Cookies from 'js-cookie';
+
+const COMMENT_CRU = 'comment/CRU';
+const COMMENT_D = 'comment/DELETE'
+
+const commentAnnotation = (comment) => {
+    return {
+      type: COMMENT_CRU,
+      payload: comment,
+    };
+  };
+const deleteComment = (commentId) => {
+    return {
+        type: COMMENT_D,
+        commentId
+    }
+}
+const initialState = {
+    list: [],
+    types: []
+};
+
+export const createAnnotation = data => async dispatch => {
+    const response = await fetch('/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:annotationId(\\d+)', {
+        method: 'post',
+        headers: {
+            'Content-Type' : 'application/json',
+            "XSRF-TOKEN": Cookies.get('XSRF-TOKEN')
+        },
+        body: JSON.stringify(data)
+    });
+    if (response.ok) {
+        const comment = await response.json();
+        dispatch(commentAnnotation(comment));
+    }
+}
+export const updateComments = data => async dispatch => {
+    const response = await fetch(`/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:annotationId(\\d+)/comments/${data.id}`, {
+        method: 'put',
+        headers: {
+            'Content-Type' : 'application/json',
+            "XSRF-TOKEN": Cookies.get('XSRF-TOKEN')
+        },
+        body: JSON.stringify(data)
+    });
+    if (response.ok) {
+        const comment = await response.json();
+        dispatch(commentAnnotation(comment));
+    }
+}
+
+export const removeComment = commentId => async dispatch => {
+    const response = await fetch(`/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:annotationId(\\d+)/comments/${commentId}`, {
+        method: 'delete'
+    })
+    if (response.ok) {
+        const comment = await response.json();
+        dispatch(deleteComment(commentId))
+    }
+
+}
+
+const commentReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case COMMENT_CRU: {
+            return {
+                ...state,
+                [action.comment.id] : action.comment
+            }
+        }
+        case COMMENT_D: {
+            const newState = {...state};
+            delete newState[action.comment.commentId];
+            return newState;
+        }
+        default:
+            return state;
+    }
+};
+
+export default commentReducer;
