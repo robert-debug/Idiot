@@ -8,9 +8,9 @@ const commentRouter = require('./comment')
 
 router.use('/session', sessionRouter);
 router.use('/tracks', trackRouter);
-router.use('/tracks/:trackId/lines/:lineId', annotationRouter);
+router.use('/tracks/:trackId(\\d+)/lines/:lineId(\\d+)', annotationRouter);
 router.use('/users', usersRouter);
-router.use('/tracks/:trackId/lines/:lineId/annotations/:annotationId', commentRouter)
+router.use('/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:annotationId(\\d+)', commentRouter)
 router.post('/test', function(req, res) {
     res.json({ requestBody: req.body });
   });

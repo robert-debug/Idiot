@@ -9,9 +9,10 @@ const annotateTrack = (annotation) => {
       payload: annotation,
     };
   };
-const deleteTrack = () => {
+const deleteAnnotation = (annotationId) => {
     return {
-        type: ANNOTATION_D
+        type: ANNOTATION_D,
+        annotationId
     }
 }
 const initialState = {
@@ -20,7 +21,7 @@ const initialState = {
 };
 
 export const createAnnotation = data => async dispatch => {
-    const response = await fetch('', {
+    const response = await fetch('/tracks/:trackId(\\d+)/lines/:lineId(\\d+)', {
         method: 'post',
         headers: {
             'Content-Type' : 'application/json',
@@ -33,19 +34,44 @@ export const createAnnotation = data => async dispatch => {
         dispatch(annotateTrack(annotation));
     }
 }
+export const updateAnnotation = data => async dispatch => {
+    const response = await fetch(`/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:${data.id}`, {
+        method: 'put',
+        headers: {
+            'Content-Type' : 'application/json',
+            "XSRF-TOKEN": Cookies.get('XSRF-TOKEN')
+        },
+        body: JSON.stringify(data)
+    });
+    if (response.ok) {
+        const annotation = await response.json();
+        dispatch(annotateTrack(annotation));
+    }
+}
+
+export const deleteAnnotation = annotationId => async dispatch => {
+    const response = await fetch(`/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:${annotationId}`, {
+        method: 'delete'
+    })
+    if (response.ok) {
+        const annotation = await response.json();
+        dispatch(deleteAnnotation(annotationId))
+    }
+
+}
 
 const annotationReducer = (state = initialState, action) => {
     switch (action.type) {
         case ANNOTATION_CRU: {
-            // const allTracks = {};
-            // action.list.forEach(track => {
-            //     allTracks[track.id] = track;
-            // });
             return {
-                // ...allTracks,
-                // ...state,
-                // list: action.list
+                ...state,
+                [action.annotation.id] : annotation
             }
+        }
+        case ANNOTATION_D: {
+            const newState = {...state};
+            delete newState[action.annotation.annotationId];
+            return newState;
         }
         default:
             return state;
