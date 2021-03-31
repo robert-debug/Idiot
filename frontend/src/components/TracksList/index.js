@@ -18,7 +18,7 @@ function TrackList () {
         <main>
             {tracks.map((track)=> {
                 return (
-                    <TrackDetail track= {track}></TrackDetail>
+                    <TrackDetail track= {track} key={track.id}></TrackDetail>
                 )
             })}
         </main>

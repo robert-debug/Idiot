@@ -2,11 +2,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from './session'
 import trackReducer from './track';
+import annotationReducer from './annotation';
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   track: trackReducer,
+  annotation: annotationReducer,
 });
 
 let enhancer;

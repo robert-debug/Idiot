@@ -5,10 +5,10 @@ const load = list => ({
     list
 })
 
-const one = track => ({
-    type: ONE,
-    track
-})
+// const one = track => ({
+//     type: ONE,
+//     track
+// })
 
 export const getTracks = () => async dispatch => {
     const response = await fetch('/api/tracks');
@@ -18,14 +18,14 @@ export const getTracks = () => async dispatch => {
     }
 };
 
-export const getOneTrack = id => async dispatch => {
-    const response = await fetch(`/api/tracks/${id}`);
+// export const getOneTrack = id => async dispatch => {
+//     const response = await fetch(`/api/tracks/${id}`);
 
-    if (response.ok) {
-        const track = await response.json();
-        dispatch(one(track));
-    }
-};
+//     if (response.ok) {
+//         const track = await response.json();
+//         dispatch(one(track));
+//     }
+// };
 
 const initialState = {
     list: [],
@@ -45,15 +45,15 @@ const trackReducer = (state = initialState, action) => {
                 list: action.list
             }
         }
-        case ONE: {
-            return {
-                ...state,
-                [action.track.id]: {
-                    ...state[action.track.id],
-                    ...action.track
-                }
-            }
-        }
+        // case ONE: {
+        //     return {
+        //         ...state,
+        //         [action.track.id]: {
+        //             ...state[action.track.id],
+        //             ...action.track
+        //         }
+        //     }
+        // }
         default:
             return state;
     }
