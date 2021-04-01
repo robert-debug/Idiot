@@ -21,6 +21,7 @@ const initialState = {
 };
 
 export const createAnnotation = data => async dispatch => {
+    console.log(data)
     const response = await fetch(`/api/annotations`, {
         method: 'post',
         headers: {
@@ -35,6 +36,7 @@ export const createAnnotation = data => async dispatch => {
     }
 }
 export const updateAnnotation = data => async dispatch => {
+    
     const response = await fetch(`/api/annotations/:${data.id}`, {
         method: 'put',
         headers: {
@@ -54,7 +56,6 @@ export const removeAnnotation = annotationId => async dispatch => {
         method: 'delete'
     })
     if (response.ok) {
-        const annotation = await response.json();
         dispatch(deleteAnnotation(annotationId))
     }
 

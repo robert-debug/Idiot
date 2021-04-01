@@ -13,10 +13,10 @@ function LoginForm({ lineId }) {
     e.preventDefault();
     setErrors([]);
     return dispatch(annotationActions.createAnnotation({ body, userId, lineId  })).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
+    // //   async (res) => {
+    // //     const data = await res.json();
+    // //     if (data && data.errors) setErrors(data.errors);
+    //   }
     );
   };
 

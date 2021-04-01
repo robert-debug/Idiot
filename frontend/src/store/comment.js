@@ -20,7 +20,7 @@ const initialState = {
     types: []
 };
 
-export const createAnnotation = data => async dispatch => {
+export const createComment = data => async dispatch => {
     const response = await fetch('/api/comments', {
         method: 'post',
         headers: {
@@ -54,7 +54,6 @@ export const removeComment = commentId => async dispatch => {
         method: 'delete'
     })
     if (response.ok) {
-        const comment = await response.json();
         dispatch(deleteComment(commentId))
     }
 

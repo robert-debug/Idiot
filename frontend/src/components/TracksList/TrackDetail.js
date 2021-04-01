@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './Tracks.css';
-import AnnotationForm from '../AnnotationForm/index'
-// import { useDispatch } from 'react-redux';
+import AnnotationForm from '../AnnotationFormModal/index'
+import CommentForm from '../CommentFormModal'
+import { useSelector } from "react-redux";
 // import { useParams } from 'react-router-dom';
 function TrackDetail ({ track }) {
     const [show, setShow] = useState(false);
@@ -11,11 +12,12 @@ function TrackDetail ({ track }) {
     let lines= {};
     let annotation= {};
     // let comment = {};
+    const sessionUserId = useSelector(state => state.session.user.id);
+    console.log(sessionUserId)
     
     const displayAnnotation = lineId => {
         let clickedLine = lines[lineId]
         let clickedAnnotation = clickedLine.Annotation;
-        if (!clickedAnnotation) return null; //eventually returns annotation form or login prompt
         console.log(clickedAnnotation)
         annotation[clickedAnnotation.id] = clickedAnnotation;
         return (
@@ -23,9 +25,16 @@ function TrackDetail ({ track }) {
                 <div className='annotation'>{clickedAnnotation.body}</div>
                 {clickedAnnotation.Comments.map(comment =>{
                     return(
+                        <>
                         <div key={comment.id} className='comments'>{comment.body}</div>
+                        {
+                            sessionUserId === comment.id?
+                            <button key={comment.id}>Delete</button> : null
+                        }
+                        </>
                     )
                 }) }
+                <CommentForm annotationId={clickedAnnotation.id} />
             </div>
             )
         
@@ -37,7 +46,7 @@ function TrackDetail ({ track }) {
         console.log(lines)
         
         return(
-            <div className='lyrics'>
+            <div key={track.id} className='lyrics'>
              {track.Lines.map( line => {
                 if (line.Annotation){
                 return (

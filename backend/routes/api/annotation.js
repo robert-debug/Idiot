@@ -17,6 +17,7 @@ router.post(
     '/',
     validateAnnotation,
     asyncHandler(async (req, res) => {
+      console.log(req.body.body)
       const { body, userId, lineId } = req.body;
       const annotation = await Annotation.create({
         body,

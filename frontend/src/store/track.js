@@ -1,5 +1,5 @@
 const LOAD = 'tracks/LOAD'
-const ONE = 'tracks/ONE'
+// const ONE = 'tracks/ONE'
 const load = list => ({
     type: LOAD,
     list
