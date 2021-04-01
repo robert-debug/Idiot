@@ -19,7 +19,8 @@ module.exports = {
       lineId: {
         type: Sequelize.INTEGER,
         references:{ model: 'Lines' },
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       createdAt: {
         allowNull: false,
