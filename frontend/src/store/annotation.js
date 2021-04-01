@@ -21,7 +21,7 @@ const initialState = {
 };
 
 export const createAnnotation = data => async dispatch => {
-    const response = await fetch('/tracks/:trackId(\\d+)/lines/:lineId(\\d+)', {
+    const response = await fetch(`/api/annotations`, {
         method: 'post',
         headers: {
             'Content-Type' : 'application/json',
@@ -35,7 +35,7 @@ export const createAnnotation = data => async dispatch => {
     }
 }
 export const updateAnnotation = data => async dispatch => {
-    const response = await fetch(`/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:${data.id}`, {
+    const response = await fetch(`/api/annotations/:${data.id}`, {
         method: 'put',
         headers: {
             'Content-Type' : 'application/json',
@@ -50,7 +50,7 @@ export const updateAnnotation = data => async dispatch => {
 }
 
 export const removeAnnotation = annotationId => async dispatch => {
-    const response = await fetch(`/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:${annotationId}`, {
+    const response = await fetch(`/api/annotations/:${annotationId}`, {
         method: 'delete'
     })
     if (response.ok) {

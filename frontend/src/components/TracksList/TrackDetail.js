@@ -54,7 +54,7 @@ function TrackDetail ({ track }) {
                         <p key={line.id} data-line_id={line.id} onClick={clickAnnotation} className='line'>{line.linetext}</p>
                         {
                             annotationVisibility?
-                            <AnnotationForm lineId={line.id} /> : null
+                            <AnnotationForm key={line.ordernum}lineId={line.id} /> : null
                         }
                         </>
                     )

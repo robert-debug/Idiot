@@ -21,7 +21,7 @@ const initialState = {
 };
 
 export const createAnnotation = data => async dispatch => {
-    const response = await fetch('/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:annotationId(\\d+)', {
+    const response = await fetch('/api/comments', {
         method: 'post',
         headers: {
             'Content-Type' : 'application/json',
@@ -35,7 +35,7 @@ export const createAnnotation = data => async dispatch => {
     }
 }
 export const updateComments = data => async dispatch => {
-    const response = await fetch(`/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:annotationId(\\d+)/comments/${data.id}`, {
+    const response = await fetch(`/api/comments/${data.id}`, {
         method: 'put',
         headers: {
             'Content-Type' : 'application/json',
@@ -50,7 +50,7 @@ export const updateComments = data => async dispatch => {
 }
 
 export const removeComment = commentId => async dispatch => {
-    const response = await fetch(`/tracks/:trackId(\\d+)/lines/:lineId(\\d+)/annotations/:annotationId(\\d+)/comments/${commentId}`, {
+    const response = await fetch(`/api/comments/${commentId}`, {
         method: 'delete'
     })
     if (response.ok) {

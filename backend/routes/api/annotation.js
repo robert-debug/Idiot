@@ -31,7 +31,7 @@ router.post(
 );
 
 router.put(
-    '/annotations/:annotationId(\\d+)', 
+    '/:annotationId(\\d+)', 
     validateAnnotation, 
     asyncHandler(async (req, res) =>{
         const annotationId = req.params.annotationId;
@@ -45,7 +45,7 @@ router.put(
     })
 )
 router.delete(
-    '/annotations/:annotationId(\\d+)', 
+    '/:annotationId(\\d+)', 
     validateAnnotation, 
     asyncHandler(async (req, res) =>{
         const annotationId = req.params.annotationId;

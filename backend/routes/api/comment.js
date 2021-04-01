@@ -31,7 +31,7 @@ router.post(
 );
 
 router.put(
-    '/comments/:commentId(\\d+)', 
+    '/:commentId(\\d+)', 
     validateAnnotation, 
     asyncHandler(async (req, res) =>{
         const commentId = req.params.commentId;
@@ -44,7 +44,7 @@ router.put(
     })
 )
 router.delete(
-    '/comments/:commentId(\\d+)', 
+    '/:commentId(\\d+)', 
     validateAnnotation, 
     asyncHandler(async (req, res) =>{
         const commentId = req.params.commentId;

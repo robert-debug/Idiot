@@ -21,7 +21,7 @@ function AnnotationFormModal({ lineId }) {
     } else {
         return(
                 <div className='loginToAnnotate'>
-                    <h2>Login to start Annotating!</h2>
+                    <h3>Login to start Annotating!</h3>
                     <LoginFormModal />
                 </div>
         )
