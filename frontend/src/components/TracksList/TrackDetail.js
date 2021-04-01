@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Tracks.css';
+import AnnotationForm from '../AnnotationForm/index'
 // import { useDispatch } from 'react-redux';
 // import { useParams } from 'react-router-dom';
 function TrackDetail ({ track }) {
@@ -34,9 +35,11 @@ function TrackDetail ({ track }) {
             lines[line.id] = line;
         })
         console.log(lines)
+        
         return(
             <div className='lyrics'>
              {track.Lines.map( line => {
+                if (line.Annotation){
                 return (
                     <>
                     <p key={line.id} data-line_id={line.id} onClick={clickAnnotation} className='line'>{line.linetext}</p>
@@ -45,7 +48,18 @@ function TrackDetail ({ track }) {
                         displayAnnotation(line.id) : null
                     }
                     </>
-                )}
+                )} else {
+                    return (
+                        <>
+                        <p key={line.id} data-line_id={line.id} onClick={clickAnnotation} className='line'>{line.linetext}</p>
+                        {
+                            annotationVisibility?
+                            <AnnotationForm lineId={line.id} /> : null
+                        }
+                        </>
+                    )
+                }
+                }
             )}
             </div>
         )
