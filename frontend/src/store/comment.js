@@ -3,7 +3,18 @@ import { csrfFetch } from './csrf';
 
 const COMMENT_CRU = 'comment/CRU';
 const COMMENT_D = 'comment/DELETE'
+const LOAD = 'comment/LIST';
+const ONE = 'comment/ONE';
 
+const getList = list => ({
+    type: LOAD,
+    list
+})
+
+const getOne = comment => ({
+    type: ONE,
+    comment
+})
 const commentAnnotation = (comment) => {
     return {
       type: COMMENT_CRU,
@@ -21,6 +32,22 @@ const initialState = {
     types: []
 };
 
+export const getComments = () => async dispatch => {
+    const response = await fetch('/api/comments');
+    if(response.ok) {
+        const list = await response.json();
+        dispatch(getList(list));
+    }
+};
+
+export const getOneComment = id => async dispatch => {
+    const response = await fetch(`/api/comments/${id}`);
+
+    if (response.ok) {
+        const comment = await response.json();
+        dispatch(getOne(annotation));
+    }
+};
 export const createComment = data => async dispatch => {
     const response = await csrfFetch('/api/comments', {
         method: 'post',
@@ -65,6 +92,26 @@ const commentReducer = (state = initialState, action) => {
             const newState = {...state};
             delete newState[action.comment.commentId];
             return newState;
+        }
+        case LOAD: {
+            const allComments = {};
+            action.list.forEach(comment => {
+                allComments[comment.id] = comment;
+            });
+            return {
+                ...allComments,
+                ...state,
+                list: action.list
+            }
+        }
+        case ONE: {
+            return {
+                ...state,
+                [action.comment.id]: {
+                    ...state[action.comment.id],
+                    ...action.comment
+                }
+            }
         }
         default:
             return state;

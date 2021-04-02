@@ -1,18 +1,18 @@
-import Cookies from 'js-cookie';
 import { csrfFetch } from './csrf';
 
 const ANNOTATION_CRU = 'annotation/CRU';
 const ANNOTATION_D = 'annotation/DELETE';
-const LOAD = 'annotation/GET';
+const LOAD = 'annotation/LIST';
+const ONE = 'annotation/ONE'
 
 const getList = list => ({
     type: LOAD,
     list
 })
 
-const getOne = Annotation => ({
+const getOne = annotation => ({
     type: ONE,
-    Annotation
+    annotation
 })
 
 const annotateTrack = (annotation) => {
@@ -30,6 +30,23 @@ const deleteAnnotation = (annotationId) => {
 const initialState = {
     list: [],
     types: []
+};
+
+export const getAnnotations = () => async dispatch => {
+    const response = await fetch('/api/annotations');
+    if(response.ok) {
+        const list = await response.json();
+        dispatch(getList(list));
+    }
+};
+
+export const getOneAnnotation = id => async dispatch => {
+    const response = await fetch(`/api/annotations/${id}`);
+
+    if (response.ok) {
+        const annotation = await response.json();
+        dispatch(getOne(annotation));
+    }
 };
 
 export const createAnnotation = data => async dispatch => {

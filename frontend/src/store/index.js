@@ -4,13 +4,15 @@ import sessionReducer from './session'
 import trackReducer from './track';
 import annotationReducer from './annotation';
 import commentReducer from './comment';
+import lineReducer from './line';
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   track: trackReducer,
   annotation: annotationReducer,
-  comment: commentReducer
+  comment: commentReducer,
+  line: lineReducer
 });
 
 let enhancer;
