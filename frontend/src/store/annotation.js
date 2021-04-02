@@ -2,7 +2,18 @@ import Cookies from 'js-cookie';
 import { csrfFetch } from './csrf';
 
 const ANNOTATION_CRU = 'annotation/CRU';
-const ANNOTATION_D = 'annotation/DELETE'
+const ANNOTATION_D = 'annotation/DELETE';
+const LOAD = 'annotation/GET';
+
+const getList = list => ({
+    type: LOAD,
+    list
+})
+
+const getOne = Annotation => ({
+    type: ONE,
+    Annotation
+})
 
 const annotateTrack = (annotation) => {
     return {
@@ -67,6 +78,26 @@ const annotationReducer = (state = initialState, action) => {
             const newState = {...state};
             delete newState[action.annotation.annotationId];
             return newState;
+        }
+        case LOAD: {
+            const allAnnotations = {};
+            action.list.forEach(annotation => {
+                allAnnotations[annotation.id] = annotation;
+            });
+            return {
+                ...allAnnotations,
+                ...state,
+                list: action.list
+            }
+        }
+        case ONE: {
+            return {
+                ...state,
+                [action.annotation.id]: {
+                    ...state[action.annotation.id],
+                    ...action.annotation
+                }
+            }
         }
         default:
             return state;

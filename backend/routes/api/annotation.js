@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Annotation } = require('../../db/models');
+const { Annotation, Comment } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -9,10 +9,32 @@ const router = express.Router();
 const validateAnnotation = [
     check('body')
       .exists({ checkFalsy: true })
-      .withMessage('Please provide a annotation.'),
+      .withMessage('Please provide an annotation.'),
     handleValidationErrors
 ]
+router.get('', asyncHandler( async (req, res) => {
+  const annotations = await Annotation.findAll(
+  {
+     include: {
+         model: Comment
+     }
+  }
+  );
+  //console.log(tracks)
+  return res.json(annotations)
+}));
 
+router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
+  const id = await req.params.id;
+  const annotation = await Track.findByPk(id, 
+    {
+      include: {
+          model: Comment
+      }
+   }
+   );
+  return res.json(annotation);
+}))
 router.post(
     '/',
     validateAnnotation,
@@ -47,7 +69,6 @@ router.put(
 )
 router.delete(
     '/:annotationId(\\d+)', 
-    validateAnnotation, 
     asyncHandler(async (req, res) =>{
         const annotationId = req.params.annotationId;
         const annotation = await Annotation.findByPk(annotationId);

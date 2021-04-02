@@ -6,13 +6,24 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-const validateAnnotation = [
+const validateComment = [
     check('body')
       .exists({ checkFalsy: true })
-      .withMessage('Please provide a annotation.'),
+      .withMessage('Please provide a Comment.'),
     handleValidationErrors
 ]
 
+router.get('', asyncHandler( async (req, res) => {
+  const comments = await Comment.findAll();
+  //console.log(tracks)
+  return res.json(comments)
+}));
+
+router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
+  const id = await req.params.id;
+  const comment= await Track.findByPk(id);
+  return res.json(comment);
+}))
 router.post(
     '/',
     validateAnnotation,
@@ -44,8 +55,7 @@ router.put(
     })
 )
 router.delete(
-    '/:commentId(\\d+)', 
-    validateAnnotation, 
+    '/:commentId(\\d+)',
     asyncHandler(async (req, res) =>{
         const commentId = req.params.commentId;
         const comment = await Comment.findByPk(commentId);
