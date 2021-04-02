@@ -1,18 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import './Tracks.css';
+import { useTrack } from '../../context/Track';
+import { getOneTrack } from '../../store/track';
+import Lines from '../Lines/index';
 import AnnotationForm from '../AnnotationFormModal/index'
 import CommentForm from '../CommentFormModal'
 import { useSelector, useDispatch } from "react-redux";
 import * as commentActions from "../../store/comment";
 import * as annotationActions from "../../store/annotation";
 
-function TrackDetail ({ track }) {
-    // const sessionUser = useSelector(state => state.session.user);
+function TrackDetail () {
+    //const sessionUser = useSelector(state => state.session.user);
+    const { trackId } = useTrack();
+    let track = useSelector(state.track[trackId]);
     // const [show, setShow] = useState(false);
     // const [annotationVisibility, setAnnotationVisibility] = useState(false)
     // const clickShow = () => {setShow(!show)};
     // const clickAnnotation = () => (setAnnotationVisibility(!annotationVisibility));
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getOneTrack(trackId))
+    }, dispatch)
+    if (!track) return null;
+    
+    return (
+        <div key={track.id} className='track'>
+            <h2 className='title'>{track.title}</h2>
+            <p className='artist'>{track.artist}</p>
+            <p className= 'album'>album: {track.album}</p> : null  
+            <Lines />
+            
+            <nav className='back-button'>
+                <NavLink to='/'>Back</NavLink>
+            </nav>
+        </div>
+    )
     // let lines= {};
     // let annotation= {};
     // const onDeleteAnnotation = () => {
@@ -93,21 +116,5 @@ function TrackDetail ({ track }) {
     //     )
                 
     // }
-    // return (
-    //     <div key={track.id} className='track'>
-    //         <h2 className='title' onClick={clickShow}>{track.title}</h2>
-    //         <p className='artist'>{track.artist}</p>
-    //         {
-    //             show?
-    //             <p className= 'album'>album: {track.album}</p> : null  
-    //         }
-    //         {
-    //             show?
-    //             displayLines(track) : null
-    //         }
-
-    //     </div>
-    // )
-    return null;
 };
 export default TrackDetail;

@@ -52,21 +52,21 @@ function LineList () {
         </div>
     )
             
+    return (
+        <div key={track.id} className='track'>
+            <h2 className='title' onClick={clickShow}>{track.title}</h2>
+            <p className='artist'>{track.artist}</p>
+            {
+                show?
+                <p className= 'album'>album: {track.album}</p> : null  
+            }
+            {
+                show?
+                displayLines(track) : null
+            }
+    
+        </div>
+    )
 }
-return (
-    <div key={track.id} className='track'>
-        <h2 className='title' onClick={clickShow}>{track.title}</h2>
-        <p className='artist'>{track.artist}</p>
-        {
-            show?
-            <p className= 'album'>album: {track.album}</p> : null  
-        }
-        {
-            show?
-            displayLines(track) : null
-        }
-
-    </div>
-)
 
 export default LineList;
