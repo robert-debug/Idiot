@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import * as lineActions from '../../store/line';
+import Annotation from '../Annotations';
 
 
 function LineList () {
     const dispatch = useDispatch();
+    const [annotationVisibility, setAnnotationVisibility] = useState(false)
+    const clickLine = () => (setAnnotationVisibility(!annotationVisibility));
     const lines = useSelector(state => {
         return state.line.list
     })
@@ -15,58 +18,39 @@ function LineList () {
 
     
     return(
-        <div key={track.id*100} className='lyrics'>
-         {track.Lines.map( line => {
-            if (line.Annotation){
+        <div className='lyrics'>
+         {lines.map( line => {
             return (
                 <>
-                <p key={line.id}  onClick={clickAnnotation} className='line'>{line.linetext}</p>
+                <p key={line.id}  onClick={clickLine} className='line'>{line.linetext}</p>
                 
                 {
                     annotationVisibility?
-                    displayAnnotation(line.id) : null
-
-                }
-                {
-                    annotationVisibility? 
-                    sessionUser?
-                    sessionUser.id === line.Annotation.userId?
-
-                    <button key={line.id*100} onClick={()=> dispatch(annotationActions.removeAnnotation(line.Annotation.id))}>Delete Annotation</button> : null : null :null
+                    <Annotation /> : null
 
                 }
                 </>
-            )} else {
-                return (
-                    <>
-                    <p key={line.id} onClick={clickAnnotation} className='line'>{line.linetext}</p>
-                    {
-                        annotationVisibility?
-                        <AnnotationForm lineId={line.id} /> : null
-                    }
-                    </>
-                )
-            }
-            }
-        )}
-        </div>
-    )
-            
-    return (
-        <div key={track.id} className='track'>
-            <h2 className='title' onClick={clickShow}>{track.title}</h2>
-            <p className='artist'>{track.artist}</p>
-            {
-                show?
-                <p className= 'album'>album: {track.album}</p> : null  
-            }
-            {
-                show?
-                displayLines(track) : null
-            }
-    
-        </div>
+            )
+         }
+         )}
+         </div>
     )
 }
-
 export default LineList;
+        
+
+                        //sessionUser.id === line.Annotation.userId?
+        
+                        //<button key={line.id*100} onClick={()=> //dispatch(annotationActions.removeAnnotation(line.Annotation.id))}>Delete Annotation</button> : null : null :null
+        
+                     
+        //             <p key={line.id} onClick={clickAnnotation} className='line'>{line.linetext}</p>
+        //             
+        //                 annotationVisibility?
+        //                 <AnnotationForm lineId={line.id} /> : null
+        //             }
+        //             </>
+        //         )
+        //     }
+        //     }
+        // )}

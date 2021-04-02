@@ -13,12 +13,12 @@ import * as annotationActions from "../../store/annotation";
 function TrackDetail () {
     //const sessionUser = useSelector(state => state.session.user);
     const { trackId } = useTrack();
-    let track = useSelector(state.track[trackId]);
     // const [show, setShow] = useState(false);
     // const [annotationVisibility, setAnnotationVisibility] = useState(false)
     // const clickShow = () => {setShow(!show)};
     // const clickAnnotation = () => (setAnnotationVisibility(!annotationVisibility));
     const dispatch = useDispatch();
+    let track = useSelector(state => state.track[trackId]);
     useEffect(() => {
         dispatch(getOneTrack(trackId))
     }, dispatch)
@@ -28,7 +28,7 @@ function TrackDetail () {
         <div key={track.id} className='track'>
             <h2 className='title'>{track.title}</h2>
             <p className='artist'>{track.artist}</p>
-            <p className= 'album'>album: {track.album}</p> : null  
+            <p className= 'album'>album: {track.album}</p>
             <Lines />
             
             <nav className='back-button'>
