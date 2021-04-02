@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import { csrfFetch } from './csrf';
 
 const ANNOTATION_CRU = 'annotation/CRU';
 const ANNOTATION_D = 'annotation/DELETE'
@@ -6,7 +7,7 @@ const ANNOTATION_D = 'annotation/DELETE'
 const annotateTrack = (annotation) => {
     return {
       type: ANNOTATION_CRU,
-      payload: annotation,
+      annotation: annotation,
     };
   };
 const deleteAnnotation = (annotationId) => {
@@ -22,12 +23,8 @@ const initialState = {
 
 export const createAnnotation = data => async dispatch => {
     console.log(data)
-    const response = await fetch(`/api/annotations`, {
+    const response = await csrfFetch(`/api/annotations`, {
         method: 'post',
-        headers: {
-            'Content-Type' : 'application/json',
-            "XSRF-TOKEN": Cookies.get('XSRF-TOKEN')
-        },
         body: JSON.stringify(data)
     });
     if (response.ok) {
@@ -37,12 +34,8 @@ export const createAnnotation = data => async dispatch => {
 }
 export const updateAnnotation = data => async dispatch => {
     
-    const response = await fetch(`/api/annotations/:${data.id}`, {
+    const response = await csrfFetch(`/api/annotations/${data.id}`, {
         method: 'put',
-        headers: {
-            'Content-Type' : 'application/json',
-            "XSRF-TOKEN": Cookies.get('XSRF-TOKEN')
-        },
         body: JSON.stringify(data)
     });
     if (response.ok) {
@@ -52,8 +45,9 @@ export const updateAnnotation = data => async dispatch => {
 }
 
 export const removeAnnotation = annotationId => async dispatch => {
-    const response = await fetch(`/api/annotations/:${annotationId}`, {
-        method: 'delete'
+    console.log(annotationId)
+    const response = await csrfFetch(`/api/annotations/${annotationId}`, {
+        method: 'DELETE',
     })
     if (response.ok) {
         dispatch(deleteAnnotation(annotationId))

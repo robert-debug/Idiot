@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import * as commentActions from "../../store/comment";
+import * as commentActions from "../../store/annotation";
 import { useDispatch, useSelector } from "react-redux";
 
 
-function CommentForm({ annotationId }) {
+function EditCommentForm({ commentId, body }) {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
-  const [body, setBody] = useState("");
+  const [newBody, setBody] = useState(body);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(commentActions.createComment({ body, userId, annotationId  })).catch(
+    return dispatch(commentActions.createAnnotation({ body: newBody, userId, lineId  })).catch(
     // //   async (res) => {
     // //     const data = await res.json();
     // //     if (data && data.errors) setErrors(data.errors);
@@ -21,18 +21,18 @@ function CommentForm({ annotationId }) {
   };
 
   return (
-    <form className='new-comment-form' onSubmit={handleSubmit}>
+    <form className='edit-annotation-form' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
       <label>
-        Improve our annotations!
+        Edit your wisdom!
         <textarea
-          value={body}
-          cols='50'
-          rows= '4'
+          value={newBody}
+          cols='80'
+          rows= '6'
           onChange={(e) => setBody(e.target.value)}
           required
         />
@@ -42,4 +42,4 @@ function CommentForm({ annotationId }) {
   );
 }
 
-export default CommentForm;
+export default EditAnnotationForm;

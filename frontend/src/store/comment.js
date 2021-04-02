@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import { csrfFetch } from './csrf';
 
 const COMMENT_CRU = 'comment/CRU';
 const COMMENT_D = 'comment/DELETE'
@@ -6,7 +7,7 @@ const COMMENT_D = 'comment/DELETE'
 const commentAnnotation = (comment) => {
     return {
       type: COMMENT_CRU,
-      payload: comment,
+      comment: comment,
     };
   };
 const deleteComment = (commentId) => {
@@ -21,12 +22,8 @@ const initialState = {
 };
 
 export const createComment = data => async dispatch => {
-    const response = await fetch('/api/comments', {
+    const response = await csrfFetch('/api/comments', {
         method: 'post',
-        headers: {
-            'Content-Type' : 'application/json',
-            "XSRF-TOKEN": Cookies.get('XSRF-TOKEN')
-        },
         body: JSON.stringify(data)
     });
     if (response.ok) {
@@ -35,12 +32,8 @@ export const createComment = data => async dispatch => {
     }
 }
 export const updateComments = data => async dispatch => {
-    const response = await fetch(`/api/comments/${data.id}`, {
+    const response = await csrfFetch(`/api/comments/${data.id}`, {
         method: 'put',
-        headers: {
-            'Content-Type' : 'application/json',
-            "XSRF-TOKEN": Cookies.get('XSRF-TOKEN')
-        },
         body: JSON.stringify(data)
     });
     if (response.ok) {
@@ -50,8 +43,8 @@ export const updateComments = data => async dispatch => {
 }
 
 export const removeComment = commentId => async dispatch => {
-    const response = await fetch(`/api/comments/${commentId}`, {
-        method: 'delete'
+    const response = await csrfFetch(`/api/comments/${commentId}`, {
+        method: 'delete',
     })
     if (response.ok) {
         dispatch(deleteComment(commentId))
@@ -62,6 +55,7 @@ export const removeComment = commentId => async dispatch => {
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case COMMENT_CRU: {
+            console.log(action.comment)
             return {
                 ...state,
                 [action.comment.id] : action.comment

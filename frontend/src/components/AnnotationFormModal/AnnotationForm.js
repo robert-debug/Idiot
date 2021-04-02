@@ -3,7 +3,7 @@ import * as annotationActions from "../../store/annotation";
 import { useDispatch, useSelector } from "react-redux";
 
 
-function LoginForm({ lineId }) {
+function AnnotationForm({ lineId }) {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
   const [body, setBody] = useState("");
@@ -42,4 +42,4 @@ function LoginForm({ lineId }) {
   );
 }
 
-export default LoginForm;
+export default AnnotationForm;

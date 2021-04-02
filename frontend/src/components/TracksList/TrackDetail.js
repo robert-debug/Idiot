@@ -2,39 +2,49 @@ import { useState } from 'react';
 import './Tracks.css';
 import AnnotationForm from '../AnnotationFormModal/index'
 import CommentForm from '../CommentFormModal'
-import { useSelector } from "react-redux";
-// import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import * as commentActions from "../../store/comment";
+import * as annotationActions from "../../store/annotation";
+
 function TrackDetail ({ track }) {
+    const sessionUser = useSelector(state => state.session.user);
     const [show, setShow] = useState(false);
     const [annotationVisibility, setAnnotationVisibility] = useState(false)
     const clickShow = () => {setShow(!show)};
     const clickAnnotation = () => (setAnnotationVisibility(!annotationVisibility));
+    const dispatch = useDispatch();
     let lines= {};
     let annotation= {};
-    // let comment = {};
-    const sessionUserId = useSelector(state => state.session.user.id);
-    console.log(sessionUserId)
-    
+    const onDeleteAnnotation = () => {
+        setAnnotationVisibility(false);
+        return dispatch(annotationActions.removeAnnotation(line.Annotation.id))
+    }
     const displayAnnotation = lineId => {
         let clickedLine = lines[lineId]
         let clickedAnnotation = clickedLine.Annotation;
         console.log(clickedAnnotation)
         annotation[clickedAnnotation.id] = clickedAnnotation;
         return (
-            <div className='ann+comment'>
-                <div className='annotation'>{clickedAnnotation.body}</div>
+            <div key={lineId} className='ann+comment'>
+                <div key={annotation.id*10} className='annotation'>{clickedAnnotation.body}</div>
                 {clickedAnnotation.Comments.map(comment =>{
+                    console.log(comment)
                     return(
                         <>
                         <div key={comment.id} className='comments'>{comment.body}</div>
                         {
-                            sessionUserId === comment.id?
-                            <button key={comment.id}>Delete</button> : null
+                            
+                            sessionUser?
+
+                            sessionUser.id === comment.userId?
+                            <button key={comment.id*1000} onClick={()=> dispatch(commentActions.removeComment(comment.id))}>Delete Comment</button> : null : null
+                            
                         }
+
                         </>
                     )
                 }) }
-                <CommentForm annotationId={clickedAnnotation.id} />
+                <CommentForm key= 'form' annotationId={clickedAnnotation.id} />
             </div>
             )
         
@@ -43,27 +53,36 @@ function TrackDetail ({ track }) {
         track.Lines.forEach(line => {
             lines[line.id] = line;
         })
-        console.log(lines)
         
         return(
-            <div key={track.id} className='lyrics'>
+            <div key={track.id*100} className='lyrics'>
              {track.Lines.map( line => {
                 if (line.Annotation){
                 return (
                     <>
-                    <p key={line.id} data-line_id={line.id} onClick={clickAnnotation} className='line'>{line.linetext}</p>
+                    <p key={line.id}  onClick={clickAnnotation} className='line'>{line.linetext}</p>
+                    
                     {
                         annotationVisibility?
                         displayAnnotation(line.id) : null
+
+                    }
+                    {
+                        annotationVisibility? 
+                        sessionUser?
+                        sessionUser.id === line.Annotation.userId?
+
+                        <button key={line.id*100} onClick={()=> dispatch(annotationActions.removeAnnotation(line.Annotation.id))}>Delete Annotation</button> : null : null :null
+
                     }
                     </>
                 )} else {
                     return (
                         <>
-                        <p key={line.id} data-line_id={line.id} onClick={clickAnnotation} className='line'>{line.linetext}</p>
+                        <p key={line.id} onClick={clickAnnotation} className='line'>{line.linetext}</p>
                         {
                             annotationVisibility?
-                            <AnnotationForm key={line.ordernum}lineId={line.id} /> : null
+                            <AnnotationForm lineId={line.id} /> : null
                         }
                         </>
                     )
@@ -75,7 +94,7 @@ function TrackDetail ({ track }) {
                 
     }
     return (
-        <div className='track'>
+        <div key={track.id} className='track'>
             <h2 className='title' onClick={clickShow}>{track.title}</h2>
             <p className='artist'>{track.artist}</p>
             {
