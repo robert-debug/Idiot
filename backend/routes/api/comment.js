@@ -26,7 +26,7 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
 }))
 router.post(
     '/',
-    validateAnnotation,
+    validateComment,
     asyncHandler(async (req, res) => {
       const { body, userId, annotationId } = req.body;
       const comment = await Comment.create({
@@ -43,7 +43,7 @@ router.post(
 
 router.put(
     '/:commentId(\\d+)', 
-    validateAnnotation, 
+    validateComment, 
     asyncHandler(async (req, res) =>{
         const commentId = req.params.commentId;
         const comment = await Comment.findByPk(commentId);

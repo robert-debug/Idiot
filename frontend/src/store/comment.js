@@ -45,7 +45,7 @@ export const getOneComment = id => async dispatch => {
 
     if (response.ok) {
         const comment = await response.json();
-        dispatch(getOne(annotation));
+        dispatch(getOne(comment));
     }
 };
 export const createComment = data => async dispatch => {

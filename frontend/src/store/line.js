@@ -41,8 +41,8 @@ const lineReducer = (state = initialState, action) => {
 
         case LOAD: {
             const allLines = {};
-            action.list.forEach(annotation => {
-                allAnnotations[annotation.id] = annotation;
+            action.list.forEach(line => {
+                allLines[line.id] = line;
             });
             return {
                 ...allLines,

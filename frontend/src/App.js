@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage/index";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import TrackList from "./components/TracksList";
+import TrackDetail from './components/TracksList/TrackDetail'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -19,6 +20,9 @@ function App() {
         <Switch>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route>
+            <TrackDetail />
           </Route>
         </Switch>
       )}
