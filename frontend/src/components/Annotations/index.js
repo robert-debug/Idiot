@@ -50,7 +50,7 @@ function Annotations ({lineId}) {
         )
     }
 
-    
+    console.log(user)
     return(
         <div className='Annotation'>
             <p>{annotation.body}</p>

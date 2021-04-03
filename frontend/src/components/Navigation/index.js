@@ -9,16 +9,22 @@ import './Navigation.css';
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
+  let login;
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
     );
   } else {
-    sessionLinks = (
+    login =(
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+
+      </>
+    )
+    sessionLinks = (
+      <>
+        <NavLink className='nav-button' id='signup-link' to="/signup">Sign Up</NavLink>
       </>
     );
   }
@@ -26,9 +32,15 @@ function Navigation({ isLoaded }){
   return (
     <nav>
       <div className='bar'>
+
+        {
+          sessionUser?
+          <div />:<LoginFormModal />
+        }
         <span className='idiot-span'>
           <NavLink exact to="/">Idiot</NavLink>
         </span>
+        
         {isLoaded && sessionLinks}
       </div>
     </nav>

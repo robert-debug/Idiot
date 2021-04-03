@@ -1,0 +1,10 @@
+.signup-form{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1em;
+}
+.signup-button{
+    width: 5em;
+}

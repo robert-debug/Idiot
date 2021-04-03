@@ -18,6 +18,14 @@ function LoginForm() {
       }
     );
   };
+  const demo = (e) => {
+    return dispatch(sessionActions.login({ credential:'Demo-lition', password:'password' })).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    );
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -45,6 +53,7 @@ function LoginForm() {
         />
       </label>
       <button type="submit">Log In</button>
+      <button type='button' onClick={demo}>Demo Log In</button>
     </form>
   );
 }

@@ -4,6 +4,7 @@ import { getTracks } from '../../store/track';
 import TrackDetail from './TrackDetail';
 import { NavLink } from 'react-router-dom';
 import { useTrack } from '../../context/Track';
+import './Tracks.css'
 
 
 function TrackList () {

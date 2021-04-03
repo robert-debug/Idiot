@@ -31,8 +31,8 @@ function AnnotationForm({ lineId }) {
         Drop some knowledge on us!
         <textarea
           value={body}
-          cols='80'
-          rows= '6'
+          cols='50'
+          rows= '4'
           onChange={(e) => setBody(e.target.value)}
           required
         />
