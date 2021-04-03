@@ -14,22 +14,22 @@ module.exports = {
     */
       return queryInterface.bulkInsert('Annotations', [
         {
-          body: 'test test test',
+          body: 'user 1 line 1',
           userId: 1,
           lineId: 1,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          body: 'test test test tes test test test test test test test',
+          body: 'user 1 line 2',
           userId: 1,
           lineId: 2,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          body: 'test test test',
-          userId: 1,
+          body: 'user 2 line 3',
+          userId: 2,
           lineId: 3,
           createdAt: new Date(),
           updatedAt: new Date()

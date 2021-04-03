@@ -14,7 +14,7 @@ module.exports = {
     */
       return queryInterface.bulkInsert('Comments', [
         {
-          body: 'test test test',
+          body: 'user 1 annotation 1',
           userId: 1,
           annotationId: 1,
           createdAt: new Date(),

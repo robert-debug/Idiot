@@ -3,7 +3,6 @@ const asyncHandler = require('express-async-handler');
 const { Annotation, Comment } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-
 const router = express.Router();
 
 const validateAnnotation = [
@@ -12,11 +11,12 @@ const validateAnnotation = [
       .withMessage('Please provide an annotation.'),
     handleValidationErrors
 ]
-router.get('', asyncHandler( async (req, res) => {
+router.get('/line/:id(\\d+)', asyncHandler( async (req, res) => {
+  const id = await req.params.id;
   const annotations = await Annotation.findAll(
   {
-     include: {
-         model: Comment
+     where: {
+        lineId: id
      }
   }
   );

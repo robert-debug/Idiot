@@ -13,8 +13,15 @@ const validateComment = [
     handleValidationErrors
 ]
 
-router.get('', asyncHandler( async (req, res) => {
-  const comments = await Comment.findAll();
+router.get('/annotations/:id(\\d+)', asyncHandler( async (req, res) => {
+  const id = await req.params.id;
+  const comments = await Comment.findAll(
+    {
+      where: {
+         annotationId: req.params.id
+      }
+   }
+  );
   //console.log(tracks)
   return res.json(comments)
 }));

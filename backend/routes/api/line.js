@@ -6,9 +6,13 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-router.get('', asyncHandler( async (req, res) => {
+router.get('/tracks/:id(\\d+)', asyncHandler( async (req, res) => {
+    const id = req.params.id;
     const lines = await Line.findAll(
     {
+        where: {
+            trackId : id
+        },
         include: {
                 model: Annotation,
                     include: {
