@@ -25,7 +25,7 @@ function TrackList () {
             {tracks.map((track)=> {
                 return (
                 <nav>
-                    <NavLink to='/tracks' onClick={() => clickHandler(track.id)}>
+                    <NavLink to={`/tracks/${track.id}`} onClick={() => clickHandler(track.id)}>
                         <h2 className='title'>{track.title}</h2>
                     </NavLink>
                     <p className='artist'>{track.artist}</p>

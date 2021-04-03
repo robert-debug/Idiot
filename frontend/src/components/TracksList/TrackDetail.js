@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import './Tracks.css';
 import { useTrack } from '../../context/Track';
 import { getOneTrack } from '../../store/track';
@@ -11,8 +11,8 @@ import * as commentActions from "../../store/comment";
 import * as annotationActions from "../../store/annotation";
 
 function TrackDetail () {
+    const trackId = useParams().id;
     //const sessionUser = useSelector(state => state.session.user);
-    const { trackId } = useTrack();
     // const [show, setShow] = useState(false);
     // const [annotationVisibility, setAnnotationVisibility] = useState(false)
     // const clickShow = () => {setShow(!show)};
@@ -21,15 +21,22 @@ function TrackDetail () {
     let track = useSelector(state => state.track[trackId]);
     useEffect(() => {
         dispatch(getOneTrack(trackId))
-    }, dispatch)
+    }, [dispatch])
+    const linesObjects = useSelector(state => {
+        return state.line
+    })
+    const lines = Object.values(linesObjects)
     if (!track) return null;
-    
     return (
         <div key={track.id} className='track'>
             <h2 className='title'>{track.title}</h2>
             <p className='artist'>{track.artist}</p>
             <p className= 'album'>album: {track.album}</p>
-            <Lines />
+            {
+                lines.map((line)=>
+                    <Lines key={line.id} line={line} />
+                )
+            }
             
             <nav className='back-button'>
                 <NavLink to='/'>Back</NavLink>

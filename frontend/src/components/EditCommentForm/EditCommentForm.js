@@ -12,7 +12,7 @@ function EditCommentForm({ commentId, body }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(commentActions.createAnnotation({ body: newBody, userId, lineId  })).catch(
+    return dispatch(commentActions.createAnnotation({ body: newBody })).catch(
     // //   async (res) => {
     // //     const data = await res.json();
     // //     if (data && data.errors) setErrors(data.errors);
@@ -42,4 +42,4 @@ function EditCommentForm({ commentId, body }) {
   );
 }
 
-export default EditAnnotationForm;
+export default EditCommentForm;

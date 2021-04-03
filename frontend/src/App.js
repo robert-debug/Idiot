@@ -24,7 +24,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route>
+          <Route path='/tracks/:id'>
             <TrackDetail />
           </Route>
         </Switch>

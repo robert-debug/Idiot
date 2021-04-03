@@ -12,7 +12,7 @@ function EditAnnotationForm({ annotationId, body }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(annotationActions.createAnnotation({ body: newBody, userId, lineId  })).catch(
+    return dispatch(annotationActions.createAnnotation({ body: newBody })).catch(
     // //   async (res) => {
     // //     const data = await res.json();
     // //     if (data && data.errors) setErrors(data.errors);

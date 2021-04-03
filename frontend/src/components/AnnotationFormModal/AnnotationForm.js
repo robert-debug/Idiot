@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as annotationActions from "../../store/annotation";
+import {createAnnotation} from "../../store/line";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -12,7 +12,7 @@ function AnnotationForm({ lineId }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(annotationActions.createAnnotation({ body, userId, lineId  })).catch(
+    return dispatch(createAnnotation({ body, userId, lineId  })).catch(
     // //   async (res) => {
     // //     const data = await res.json();
     // //     if (data && data.errors) setErrors(data.errors);

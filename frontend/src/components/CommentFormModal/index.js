@@ -13,7 +13,7 @@ function CommentFormModal({ annotationId }) {
             <button onClick={() => setShowModal(true)}>Comment</button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CommentForm annotationId={annotationId}  />
+                        <CommentForm props={{annotationId, setShowModal}}  />
                     </Modal>
       )}
       </>)

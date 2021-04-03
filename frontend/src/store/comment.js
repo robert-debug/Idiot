@@ -27,15 +27,13 @@ const deleteComment = (commentId) => {
         commentId
     }
 }
-const initialState = {
-    list: [],
-    types: []
-};
+const initialState = {};
 
-export const getComments = () => async dispatch => {
-    const response = await fetch('/api/comments');
+export const getComments = (id) => async dispatch => {
+    const response = await fetch(`/api/comments/annotations/${id}`);
     if(response.ok) {
         const list = await response.json();
+        console.log(list)
         dispatch(getList(list));
     }
 };
@@ -82,10 +80,10 @@ export const removeComment = commentId => async dispatch => {
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case COMMENT_CRU: {
-            console.log(action.comment)
+            console.log(action.comment.comment)
             return {
                 ...state,
-                [action.comment.id] : action.comment
+                [action.comment.comment.id] : action.comment.comment
             }
         }
         case COMMENT_D: {

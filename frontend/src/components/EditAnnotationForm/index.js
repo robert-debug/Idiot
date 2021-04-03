@@ -8,19 +8,16 @@ function EditAnnotationFormModal({ annotationId, userId, body }) {
   const [showModal, setShowModal] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
   const prop = {annotationId, body}
-  if(sessionUser) {  
-      if(sessionUser.id === userId){
     return(
         <>
             <button onClick={() => setShowModal(true)}>Edit Annotation</button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <EditAnnotationForm props={...prop}  />
+                        <EditAnnotationForm props={prop}  />
                     </Modal>
       )}
       </>)
-        }
-    }    
+         
 }
 
 export default EditAnnotationFormModal;

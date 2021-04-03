@@ -27,15 +27,13 @@ const deleteAnnotation = (annotationId) => {
         annotationId
     }
 }
-const initialState = {
-    list: [],
-    types: []
-};
+const initialState = {};
 
-export const getAnnotations = () => async dispatch => {
-    const response = await fetch('/api/annotations');
+export const getAnnotations = (id) => async dispatch => {
+    const response = await fetch(`/api/annotations/line/${id}`);
     if(response.ok) {
         const list = await response.json();
+        console.log(list)
         dispatch(getList(list));
     }
 };
@@ -88,7 +86,7 @@ const annotationReducer = (state = initialState, action) => {
         case ANNOTATION_CRU: {
             return {
                 ...state,
-                [action.annotation.id] : action.annotation
+                [action.annotation.annotation.id] : action.annotation.annotation
             }
         }
         case ANNOTATION_D: {
@@ -99,7 +97,7 @@ const annotationReducer = (state = initialState, action) => {
         case LOAD: {
             const allAnnotations = {};
             action.list.forEach(annotation => {
-                allAnnotations[annotation.id] = annotation;
+                allAnnotations['annotation'] = annotation;
             });
             return {
                 ...allAnnotations,

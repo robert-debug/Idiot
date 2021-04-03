@@ -6,7 +6,7 @@ export const useTrack = () => useContext(TrackContext);
 
 
 export default function TrackProvider({ children }) {
-    const [ trackId, setTrackId ] = useState(1);
+    const [ trackId, setTrackId ] = useState();
     return (
         <TrackContext.Provider
           value={{

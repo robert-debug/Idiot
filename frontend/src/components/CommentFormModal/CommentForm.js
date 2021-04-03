@@ -3,17 +3,18 @@ import * as commentActions from "../../store/comment";
 import { useDispatch, useSelector } from "react-redux";
 
 
-function CommentForm({ annotationId }) {
+function CommentForm({ props }) {
+  const { annotationId, setShowModal } = props;
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState([]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(commentActions.createComment({ body, userId, annotationId  })).catch(
-    // //   async (res) => {
+    dispatch(commentActions.createComment({ body, userId, annotationId  })).catch(
+    setShowModal(false)
+      // //   async (res) => {
     // //     const data = await res.json();
     // //     if (data && data.errors) setErrors(data.errors);
     //   }
@@ -28,7 +29,7 @@ function CommentForm({ annotationId }) {
         ))}
       </ul>
       <label>
-        Improve our annotations!
+        Improve our Annotations!
         <textarea
           value={body}
           cols='50'
