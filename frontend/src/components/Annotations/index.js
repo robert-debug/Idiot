@@ -9,7 +9,7 @@ import CommentFormModal from '../CommentFormModal'
 import EditAnnotationForm from '../EditAnnotationForm';
 import {useTrack} from '../../context/Track'
 import {getLines} from '../../store/line';
-
+import './Annotation.css'
 
 function Annotations ({lineId}) {
     console.log(lineId)

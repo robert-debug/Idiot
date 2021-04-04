@@ -1,0 +1,9 @@
+.Annotation{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 300px;
+    box-sizing: border-box;
+    border: 5px, solid, #FF0080;
+    font-size: 20px;
+}
