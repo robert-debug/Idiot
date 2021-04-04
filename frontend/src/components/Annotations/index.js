@@ -12,7 +12,7 @@ import {getLines} from '../../store/line';
 
 
 function Annotations ({lineId}) {
-    // console.log(lineId)
+    console.log(lineId)
     const {trackId} = useTrack();
     const editProp={}
     const dispatch = useDispatch();

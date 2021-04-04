@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie';
 import { csrfFetch } from './csrf';
 
 const COMMENT_CRU = 'comment/CRU';

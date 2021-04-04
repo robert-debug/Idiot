@@ -38,7 +38,7 @@ function Navigation({ isLoaded }){
           <div />:<LoginFormModal />
         }
         <span className='idiot-span'>
-          <NavLink exact to="/">Idiot</NavLink>
+          <NavLink exact to="/">IdIoT</NavLink>
         </span>
         
         {isLoaded && sessionLinks}

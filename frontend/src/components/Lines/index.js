@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as lineActions from '../../store/line';
 import Annotation from '../Annotations';
 import {useTrack} from '../../context/Track'
-
+import './Lines.css'
 function LineList ({line}) {
     const dispatch = useDispatch();
     const {trackId} = useTrack();
