@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as commentActions from '../../store/comment';
 import CommentFormModal from '../CommentFormModal'
 import EditCommentForm from '../EditCommentForm';
+import './Comments.css'
 
 const Comments = ({annotationId}) => {
     const editProp={}
@@ -37,7 +38,7 @@ const Comments = ({annotationId}) => {
                 const prop = {body: comment.body, commentId : comment.id, userId: comment.userId};
                 return(
                 <div key={comment.id} className='comment-div'>
-                    <p key={comment.body}>{comment.body}</p>
+                    <span className='comment-span' key={comment.body}>{comment.body}</span>
                     {
                         user.id === comment.userId?
                         <EditCommentForm key={i} prop={prop} />:null

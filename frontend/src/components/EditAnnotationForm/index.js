@@ -10,7 +10,7 @@ function EditAnnotationFormModal({ annotationId, userId, body }) {
   const prop = {annotationId, body}
     return(
         <>
-            <button onClick={() => setShowModal(true)}>Edit Annotation</button>
+            <button className= 'content-button' onClick={() => setShowModal(true)}>Edit Annotation</button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <EditAnnotationForm props={prop}  />

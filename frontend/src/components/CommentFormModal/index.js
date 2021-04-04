@@ -10,10 +10,10 @@ function CommentFormModal({ annotationId }) {
 
     return(
         <>
-            <button onClick={() => setShowModal(true)}>Comment</button>
+            <button className= 'content-button' onClick={() => setShowModal(true)}>Comment</button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CommentForm props={{annotationId, setShowModal}}  />
+                        <CommentForm className='new-comment-form' props={{annotationId, setShowModal}}  />
                     </Modal>
       )}
       </>)

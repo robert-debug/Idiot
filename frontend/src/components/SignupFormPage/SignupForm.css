@@ -3,8 +3,11 @@
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 1em;
 }
 .signup-button{
     width: 5em;
+    margin: 1em;
+}
+.form-item{
+    margin: 10px;
 }

@@ -21,24 +21,26 @@ function AnnotationForm({ lineId }) {
   };
 
   return (
-    <form className='new-annotation-form' onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <label>
-        Drop some knowledge on us!
-        <textarea
-          value={body}
-          cols='50'
-          rows= '4'
-          onChange={(e) => setBody(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Save</button>
-    </form>
+    <>
+      <p>Drop some knowledge on us!</p>
+      <form className='form' onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
+        <label>
+          <textarea className='text-area'
+            value={body}
+            cols='60'
+            rows= '4'
+            onChange={(e) => setBody(e.target.value)}
+            required
+          />
+        </label>
+        <button type="submit">Save</button>
+      </form>
+    </>
   );
 }
 

@@ -1,0 +1,10 @@
+.line-div{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    align-self:flex-start;
+}
+.lyric{
+    display: flex;
+    justify-content: flex-start;
+}

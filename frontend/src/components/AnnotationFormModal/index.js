@@ -11,7 +11,7 @@ function AnnotationFormModal({ lineId }) {
 
     return(
         <>
-            <button onClick={() => setShowModal(true)}>Start the Idiot Annotation</button>
+            <button  onClick={() => setShowModal(true)}>Start the Idiot Annotation</button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <AnnotationForm lineId={lineId}  />

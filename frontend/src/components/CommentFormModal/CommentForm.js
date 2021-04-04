@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as commentActions from "../../store/comment";
 import { useDispatch, useSelector } from "react-redux";
-
+import './CommentForm.css'
 
 function CommentForm({ props }) {
   const { annotationId, setShowModal } = props;
@@ -22,24 +22,27 @@ function CommentForm({ props }) {
   };
 
   return (
-    <form className='new-comment-form' onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <label>
-        Improve our Annotations!
-        <textarea
-          value={body}
-          cols='50'
-          rows= '4'
-          onChange={(e) => setBody(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Save</button>
-    </form>
+    <>
+    <p>Improve our Annotations!</p>
+    <form className='form' onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
+       <label>
+          <textarea
+            className='text-area'
+           value={body}
+           cols='50'
+           rows= '4'
+           onChange={(e) => setBody(e.target.value)}
+           required
+          />
+        </label>
+        <button type="submit">Save</button>
+      </form>
+    </>
   );
 }
 

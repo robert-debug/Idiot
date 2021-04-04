@@ -35,8 +35,8 @@ function Annotations ({lineId}) {
     }
     if (!annotation && !user) {
         return(
-            <div className='please-Login-div'>
-                <h3>You have to login to annotate, Idiot</h3>
+            <div id='please-Login-div'>
+                <span className='login-idiot-user'>You have to login to annotate, Idiot</span>
                 <LoginFormModal />
             </div>
         )
@@ -53,15 +53,17 @@ function Annotations ({lineId}) {
     console.log(user)
     return(
         <div className='Annotation'>
-            <p>{annotation.body}</p>
-            {
-                user.id === annotation.userId?
-                <EditAnnotationForm prop={editProp}/>:null
-            }
-            {
-                user.id === annotation.userId?
-                <button onClick={()=> dispatch(lineActions.removeAnnotation(annotation.id, lineId))}>Delete Annotation</button>: null
-            }
+            <span className='annotation-text'>{annotation.body}</span>
+            <div className='button-box'>
+                {
+                    user.id === annotation.userId?
+                    <EditAnnotationForm prop={editProp}/>:null
+                }
+                {
+                    user.id === annotation.userId?
+                    <button className= 'content-button' onClick={()=> dispatch(lineActions.removeAnnotation(annotation.id, lineId))}>Delete Annotation</button>: null
+                }
+            </div>
             <Comment annotationId={annotation.id}/>
             <CommentFormModal annotationId={annotation.id} />
         </div>

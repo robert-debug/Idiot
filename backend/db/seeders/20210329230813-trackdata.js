@@ -35,6 +35,13 @@ module.exports = {
           updatedAt: new Date()
         },
         {
+          title: 'Minor Threat',
+          artist: 'Minor Threat',
+          album: 'Minor Threat',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
           title: 'Teenage Lobotomy',
           artist: 'The Ramones',
           album: 'Rocket to Russia',
@@ -56,7 +63,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          title: 'AstroZomebies',
+          title: 'AstroZombies',
           artist: 'Misfits',
           album: 'Walk Among Us',
           createdAt: new Date(),
@@ -147,12 +154,13 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          title: 'Numb',
-          artist: 'Waterparks',
-          album: 'Greatest Hits',
+          title: 'Fairytale of New York',
+          artist: 'The Pogues',
+          album: 'If I Should Fall from Grace with God',
           createdAt: new Date(),
           updatedAt: new Date()
         },
+
 
         
     ], {});

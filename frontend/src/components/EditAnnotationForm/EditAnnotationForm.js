@@ -21,15 +21,17 @@ function EditAnnotationForm({ annotationId, body }) {
   };
 
   return (
-    <form className='edit-annotation-form' onSubmit={handleSubmit}>
+    <>
+    <p>Edit your wisdom!</p>
+    <form className='form' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
       <label>
-        Edit your wisdom!
         <textarea
+          className='text-area'
           value={newBody}
           cols='80'
           rows= '6'
@@ -39,6 +41,7 @@ function EditAnnotationForm({ annotationId, body }) {
       </label>
       <button type="submit">Save</button>
     </form>
+    </>
   );
 }
 
