@@ -18,7 +18,11 @@ module.exports = {
       },
       annotationId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Annotations'}
+        references: { 
+          model: 'Annotations'        
+        },
+        onDelete: 'CASCADE',
+        hooks:'true'
       },
       createdAt: {
         allowNull: false,
