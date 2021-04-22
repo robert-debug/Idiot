@@ -79,7 +79,7 @@ export const removeComment = commentId => async dispatch => {
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case COMMENT_CRU: {
-            console.log(action.comment.comment)
+            console.log('--------------',action.comment.comment)
             return {
                 ...state,
                 [action.comment.comment.id] : action.comment.comment
@@ -87,7 +87,9 @@ const commentReducer = (state = initialState, action) => {
         }
         case COMMENT_D: {
             const newState = {...state};
-            delete newState[action.comment.commentId];
+            const commentNum = action.commentId
+            console.log(newState)
+            delete newState[commentNum];
             return newState;
         }
         case LOAD: {

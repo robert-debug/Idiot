@@ -3,7 +3,8 @@ import { Modal } from '../../context/Modal';
 import CommentForm from './CommentForm';
 import { useSelector } from "react-redux";
 
-function CommentFormModal({ annotationId }) {
+function CommentFormModal({ prop }) {
+  console.log(prop)
   const [showModal, setShowModal] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
   if(sessionUser) {
@@ -13,7 +14,7 @@ function CommentFormModal({ annotationId }) {
             <button className= 'content-button' onClick={() => setShowModal(true)}>Comment</button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CommentForm className='new-comment-form' props={{annotationId, setShowModal}}  />
+                        <CommentForm className='new-comment-form' props={{prop, setShowModal}}  />
                     </Modal>
       )}
       </>)

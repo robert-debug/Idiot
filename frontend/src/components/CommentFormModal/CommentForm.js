@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import './CommentForm.css'
 
 function CommentForm({ props }) {
-  const { annotationId, setShowModal } = props;
+  console.log(props)
+  const annotationId = props.prop.annotationId 
+  const setShowModal  = props.setShowModal;
+  console.log(annotationId)
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
   const [body, setBody] = useState("");

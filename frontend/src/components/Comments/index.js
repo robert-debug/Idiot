@@ -43,6 +43,10 @@ const Comments = ({annotationId}) => {
                         user.id === comment.userId?
                         <EditCommentForm key={i} prop={prop} />:null
                     }
+                    {
+                    user.id === comment.userId?
+                    <button className= 'content-button' onClick={()=> dispatch(commentActions.removeComment(comment.id))}>Delete Comment</button>: null
+                    }
                 </div>
                 )
 

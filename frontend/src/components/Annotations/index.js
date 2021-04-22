@@ -6,6 +6,7 @@ import Comment from '../Comments';
 import LoginFormModal from '../LoginFormModal';
 import AnnotationFormModal from '../AnnotationFormModal';
 import CommentFormModal from '../CommentFormModal'
+import commentActions from '../../store/comment';
 import EditAnnotationForm from '../EditAnnotationForm';
 import {useTrack} from '../../context/Track'
 import {getLines} from '../../store/line';
@@ -16,13 +17,17 @@ function Annotations ({lineId}) {
     const {trackId} = useTrack();
     const editProp={}
     const dispatch = useDispatch();
+    const prop = {}
     const annotation = useSelector(state => {
         return state.line[lineId].Annotation
     })
+    const commentObjects= useSelector(state => {
+        return state.comment
+    })
+    const commentArray = [];
     const user = useSelector(state => {
         return state.session.user;
     })
-
     useEffect(()=>{
         dispatch(annotationActions.getAnnotations(lineId));
         dispatch(getLines(trackId));
@@ -30,9 +35,17 @@ function Annotations ({lineId}) {
     if(annotation){
         editProp.body = annotation.body;
         editProp.annotationId = annotation.id;
+        prop.annotationId = annotation.id;
+        prop.lineId = lineId;
         // console.log(annotation)
         // console.log(editProp)
+        for (let key in commentObjects) {
+            if (commentObjects[key].annotationId === annotation.id){
+                commentArray.push(commentObjects[key]);
+            }
+        }
     }
+    console.log(prop)
     if (!annotation && !user) {
         return(
             <div id='please-Login-div'>
@@ -64,8 +77,8 @@ function Annotations ({lineId}) {
                     <button className= 'content-button' onClick={()=> dispatch(lineActions.removeAnnotation(annotation.id, lineId))}>Delete Annotation</button>: null
                 }
             </div>
-            <Comment annotationId={annotation.id}/>
-            <CommentFormModal annotationId={annotation.id} />
+            <Comment prop={prop}/>
+            <CommentFormModal prop={prop} />
         </div>
     )
 
