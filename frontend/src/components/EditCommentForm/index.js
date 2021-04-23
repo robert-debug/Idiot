@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 import EditCommentForm from './EditCommentForm'
 
 
-function EditCommentFormModal({ commentId, body, userId }) {
+function EditCommentFormModal(prop) {
   const [showModal, setShowModal] = useState(false);
+  prop = { ...prop, setShowModal}
   const sessionUser = useSelector(state => state.session.user);
-  const prop = {commentId, body}
 
     return(
         <>

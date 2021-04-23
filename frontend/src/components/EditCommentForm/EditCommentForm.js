@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import * as commentActions from "../../store/annotation";
+import * as commentActions from "../../store/comment";
 import { useDispatch, useSelector } from "react-redux";
 
 
-function EditCommentForm({ commentId, body }) {
+function EditCommentForm({props}) {
+  console.log(props.prop)
+  const setShowModal = props.setShowModal
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
-  const [newBody, setBody] = useState(body);
+  const [newBody, setBody] = useState(props.prop.body);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(commentActions.createAnnotation({ body: newBody })).catch(
+    setShowModal(false)
+    return dispatch(commentActions.updateComments({ body: newBody, commentId: props.prop.commentId } )).catch(
     // //   async (res) => {
     // //     const data = await res.json();
     // //     if (data && data.errors) setErrors(data.errors);

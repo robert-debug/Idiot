@@ -66,8 +66,8 @@ router.put(
 
       const body = req.body;
       annotation.body = body.body;
-        await annotation.save();
-        return res.json({annotation})
+      await annotation.save();
+      return res.json({annotation})
 
 
     })

@@ -52,12 +52,13 @@ router.put(
     '/:commentId(\\d+)', 
     validateComment, 
     asyncHandler(async (req, res) =>{
-        const commentId = req.params.commentId;
-        const comment = await Comment.findByPk(commentId);
-        const { body } = req.body;
-        comment.body = body;
-        await comment.save();
-        return res.json({comment})
+      const commentId = await req.params.commentId;
+      const comment = await Comment.findByPk(commentId);
+      console.log('----------------', req.body)
+      const body  = req.body.body;
+      comment.body = body;
+      await comment.save();
+      return res.json({comment})
 
     })
 )
