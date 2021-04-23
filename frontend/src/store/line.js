@@ -14,6 +14,7 @@ const getList = list => ({
 })
 
 const annotateTrack = (annotation) => {
+    console.log(annotation)
     return {
       type: ANNOTATION_CRU,
       annotation: annotation,
@@ -75,7 +76,6 @@ export const createAnnotation = data => async dispatch => {
     }
 }
 export const updateAnnotation = (data) => async dispatch => {
-    console.log(data)
     const response = await csrfFetch(`/api/annotations/${data.annotationId}`, {
         method: 'put',
         body: JSON.stringify({body : data.body})
@@ -83,7 +83,8 @@ export const updateAnnotation = (data) => async dispatch => {
     console.log(response)
     if (response.ok) {
         const annotation = await response.json();
-        dispatch(annotateTrack(data));
+        console.log(annotation)
+        dispatch(annotateTrack(annotation));
     }
 }
 const lineReducer = (state = initialState, action) => {
@@ -103,6 +104,7 @@ const lineReducer = (state = initialState, action) => {
             const newState = {
                 ...state
             }
+            console.log(action.annotation)
             const target = action.annotation.annotation.lineId;
             newState[target].Annotation = action.annotation.annotation;
             return newState;

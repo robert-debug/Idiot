@@ -10,7 +10,7 @@ console.log('----prop---', editProp )
   const annotationId = editProp.annotationId
   const [showModal, setShowModal] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
-  const prop = { body, annotationId, showModal }
+  const prop = { body, annotationId, setShowModal }
   console.log(prop)
     return(
         <>

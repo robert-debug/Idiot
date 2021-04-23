@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 function EditAnnotationForm( { props } ) {
   console.log(props)
   // we have data now, but we need to fix annotation form, get submit to change modal state.
-  const { body, annotationId, showModal } = props
+  const { body, annotationId, setShowModal } = props
   console.log('now now now', body, annotationId)
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
@@ -16,11 +16,12 @@ function EditAnnotationForm( { props } ) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    setShowModal(false)
     dispatch(annotationActions.updateAnnotation({ body: newBody, annotationId })).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
+      // async (res) => {
+      //   const data = await res.json();
+      //   if (data && data.errors) setErrors(data.errors);
+      // }
     );
   };
 
