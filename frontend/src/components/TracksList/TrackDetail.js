@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import './Tracks.css';
 import { getOneTrack } from '../../store/track';
@@ -7,11 +7,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 function TrackDetail () {
     const trackId = useParams().id;
+    console.log(trackId)
     const dispatch = useDispatch();
     let track = useSelector(state => state.track[trackId]);
     useEffect(() => {
         dispatch(getOneTrack(trackId))
-    }, [dispatch])
+    }, [])
     const linesObjects = useSelector(state => {
         return state.line
     })

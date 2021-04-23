@@ -6,7 +6,6 @@ import EditCommentForm from '../EditCommentForm';
 import './Comments.css'
 
 const Comments = ({annotationId}) => {
-    const editProp={}
     const dispatch = useDispatch();
     const commentObjects= useSelector(state => {
         return state.comment
@@ -17,7 +16,7 @@ const Comments = ({annotationId}) => {
     })
     useEffect(()=>{
         dispatch(commentActions.getComments(annotationId));
-    },[dispatch]);
+    });
  
     if (!comments && !user) {
         return null;

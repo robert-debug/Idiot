@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom';
 import * as lineActions from '../../store/line';
 import Annotation from '../Annotations';
 import {useTrack} from '../../context/Track'
 import './Lines.css'
 function LineList ({line}) {
     const dispatch = useDispatch();
-    const {trackId} = useTrack();
+    const trackId = useParams().id;
     const [annotationVisibility, setAnnotationVisibility] = useState(false)
     const clickLine = () => (setAnnotationVisibility(!annotationVisibility));
 
