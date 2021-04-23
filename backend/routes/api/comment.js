@@ -65,6 +65,7 @@ router.delete(
     '/:commentId(\\d+)',
     asyncHandler(async (req, res) =>{
         const commentId = req.params.commentId;
+        console.log(commentId)
         const comment = await Comment.findByPk(commentId);
         await comment.destroy();
         return res.json({'result':'destroyed'})

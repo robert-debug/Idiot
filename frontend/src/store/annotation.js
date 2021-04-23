@@ -59,7 +59,7 @@ export const createAnnotation = data => async dispatch => {
     }
 }
 export const updateAnnotation = data => async dispatch => {
-    
+    console.log(data)
     const response = await csrfFetch(`/api/annotations/${data.id}`, {
         method: 'put',
         body: JSON.stringify(data)

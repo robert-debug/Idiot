@@ -57,10 +57,15 @@ router.put(
     '/:annotationId(\\d+)', 
     validateAnnotation, 
     asyncHandler(async (req, res) =>{
-        const annotationId = req.params.annotationId;
-        const annotation = await Annotation.findByPk(annotationId);
-        const { body } = req.body;
-        annotation.body = body;
+      console.log(req, res)
+      const annotationId = await req.params.annotationId;
+      console.log('----------------------------------', req.params.id)
+      console.log(annotationId)
+      const annotation = await Annotation.findByPk(annotationId);
+      console.log(annotation)
+      console.log(req.body)
+      const body = req.body;
+      annotation.body = body;
         await annotation.save();
         return res.json({annotation})
 

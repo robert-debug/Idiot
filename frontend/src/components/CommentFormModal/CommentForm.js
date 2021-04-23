@@ -15,8 +15,8 @@ function CommentForm({ props }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(commentActions.createComment({ body, userId, annotationId  })).catch(
     setShowModal(false)
+    dispatch(commentActions.createComment({ body, userId, annotationId  })).catch(
       // //   async (res) => {
     // //     const data = await res.json();
     // //     if (data && data.errors) setErrors(data.errors);

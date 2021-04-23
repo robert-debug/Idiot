@@ -4,10 +4,14 @@ import { useSelector } from "react-redux";
 import EditAnnotationForm from './EditAnnotationForm'
 
 
-function EditAnnotationFormModal({ annotationId, userId, body }) {
+function EditAnnotationFormModal( { editProp } ) {
+console.log('----prop---', editProp )
+  const body = editProp.body
+  const annotationId = editProp.annotationId
   const [showModal, setShowModal] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
-  const prop = {annotationId, body}
+  const prop = { body, annotationId, showModal }
+  console.log(prop)
     return(
         <>
             <button className= 'content-button' onClick={() => setShowModal(true)}>Edit Annotation</button>

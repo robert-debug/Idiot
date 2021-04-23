@@ -45,6 +45,7 @@ function Annotations ({lineId}) {
             }
         }
     }
+    console.log('editProp', editProp)
     console.log(prop)
     if (!annotation && !user) {
         return(
@@ -70,7 +71,7 @@ function Annotations ({lineId}) {
             <div className='button-box'>
                 {
                     user.id === annotation.userId?
-                    <EditAnnotationForm prop={editProp}/>:null
+                    <EditAnnotationForm editProp={editProp}/>:null
                 }
                 {
                     user.id === annotation.userId?

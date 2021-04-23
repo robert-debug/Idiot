@@ -29,7 +29,7 @@ const deleteComment = (commentId) => {
 const initialState = {};
 
 export const getComments = (id) => async dispatch => {
-    const response = await fetch(`/api/comments/annotations/${id}`);
+    const response = await fetch(`/api/comments/${id}`);
     if(response.ok) {
         const list = await response.json();
         console.log(list)

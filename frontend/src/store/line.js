@@ -6,26 +6,13 @@ const ONE = 'line/ONE'
 const ANNOTATION_D ='line/DELETEANNOTATION'
 const COMMENT_CRU = 'line/COMMENTCRU';
 const COMMENT_D = 'line/COMMENTDELETE'
-const LOADCOMMENT = 'line/COMMENTLIST';
-const ONECOMMENT = 'line/COMMENTONE';
+
 
 const getList = list => ({
     type: LOAD,
     list
 })
 
-const commentAnnotation = (comment) => {
-    return {
-      type: COMMENT_CRU,
-      comment: comment,
-    };
-  };
-const deleteComment = (commentId, lineId) => {
-    return {
-        type: COMMENT_D,
-        commentId
-    }
-}
 const annotateTrack = (annotation) => {
     return {
       type: ANNOTATION_CRU,
@@ -87,53 +74,18 @@ export const createAnnotation = data => async dispatch => {
         dispatch(annotateTrack(annotation));
     }
 }
-export const getOneComment = id => async dispatch => {
-    const response = await fetch(`/api/comments/${id}`);
-
-    if (response.ok) {
-        const comment = await response.json();
-        dispatch(getOne(comment));
-    }
-};
-export const createComment = data => async dispatch => {
-    const response = await csrfFetch('/api/comments', {
-        method: 'post',
-        body: JSON.stringify(data)
-    });
-    if (response.ok) {
-        const comment = await response.json();
-        dispatch(commentAnnotation(comment));
-    }
-}
-export const updateComments = data => async dispatch => {
-    const response = await csrfFetch(`/api/comments/${data.id}`, {
+export const updateAnnotation = (data) => async dispatch => {
+    console.log(data)
+    const response = await csrfFetch(`/api/annotations/${data.annotationId}`, {
         method: 'put',
-        body: JSON.stringify(data)
+        body: JSON.stringify({body : data.body})
     });
+    console.log(response)
     if (response.ok) {
-        const comment = await response.json();
-        dispatch(commentAnnotation(comment));
+        const annotation = await response.json();
+        dispatch(annotateTrack(data));
     }
 }
-
-export const removeComment = commentId => async dispatch => {
-    const response = await csrfFetch(`/api/comments/${commentId}`, {
-        method: 'delete',
-    })
-    if (response.ok) {
-        dispatch(deleteComment(commentId))
-    }
-
-}
-export const getComments = (id) => async dispatch => {
-    const response = await fetch(`/api/comments/annotations/${id}`);
-    if(response.ok) {
-        const list = await response.json();
-        console.log(list)
-        dispatch(getList(list));
-    }
-};
-
 const lineReducer = (state = initialState, action) => {
     switch (action.type) {
 
