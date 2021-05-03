@@ -1,16 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import logo from '../../assets/Idiot.png';
 import './Navigation.css';
 
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
-
+  const history = useHistory();
   let login;
   let sessionLinks;
+  const onClick = (e) =>{
+    history.push('/')
+  }
   if (sessionUser) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
@@ -37,9 +41,10 @@ function Navigation({ isLoaded }){
           sessionUser?
           <div />:<LoginFormModal />
         }
-        <span className='idiot-span'>
+        {/* <span className='idiot-span'>
           <NavLink exact to="/">IdIoT</NavLink>
-        </span>
+        </span> */}
+        <img className='logo' src={logo} onClick={onClick}></img>
         
         {isLoaded && sessionLinks}
       </div>

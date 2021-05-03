@@ -13,12 +13,13 @@ const validateComment = [
     handleValidationErrors
 ]
 
-router.get('/annotations/:id(\\d+)', asyncHandler( async (req, res) => {
+router.get('/tracks/:id(\\d+)', asyncHandler( async (req, res) => {
   const id = await req.params.id;
+  console.log(id)
   const comments = await Comment.findAll(
     {
       where: {
-         annotationId: req.params.id
+         trackId: req.params.id
       }
    }
   );
@@ -35,11 +36,11 @@ router.post(
     '/',
     validateComment,
     asyncHandler(async (req, res) => {
-      const { body, userId, annotationId } = req.body;
+      const { body, userId, trackId } = req.body;
       const comment = await Comment.create({
         body,
         userId,
-        annotationId
+        trackId
       });
   
       return res.json({

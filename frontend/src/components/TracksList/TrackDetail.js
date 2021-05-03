@@ -3,6 +3,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import './Tracks.css';
 import { getOneTrack } from '../../store/track';
 import Lines from '../Lines/index';
+import Comments from '../Comments/index'
 import { useSelector, useDispatch } from "react-redux";
 
 function TrackDetail () {
@@ -28,6 +29,8 @@ function TrackDetail () {
                     <Lines key={line.id} line={line} />
                 )
             }
+            <Comments prop={track.id} />
+            
             
             <nav className ='back-button-nav'>
                 <NavLink className='back-button' to='/'>Back</NavLink>

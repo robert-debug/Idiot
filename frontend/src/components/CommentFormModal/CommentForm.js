@@ -5,9 +5,9 @@ import './CommentForm.css'
 
 function CommentForm({ props }) {
   console.log(props)
-  const annotationId = props.prop.annotationId 
+  const trackId = props.trackId 
   const setShowModal  = props.setShowModal;
-  console.log(annotationId)
+  console.log(trackId)
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
   const [body, setBody] = useState("");
@@ -16,7 +16,7 @@ function CommentForm({ props }) {
     e.preventDefault();
     setErrors([]);
     setShowModal(false)
-    dispatch(commentActions.createComment({ body, userId, annotationId  })).catch(
+    dispatch(commentActions.createComment({ body, userId, trackId  })).catch(
       // //   async (res) => {
     // //     const data = await res.json();
     // //     if (data && data.errors) setErrors(data.errors);
@@ -26,7 +26,7 @@ function CommentForm({ props }) {
 
   return (
     <>
-    <p>Improve our Annotations!</p>
+    <p>Do you know what opinions are like? Everyone has one.</p>
     <form className='form' onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (

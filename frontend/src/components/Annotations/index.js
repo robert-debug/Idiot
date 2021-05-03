@@ -78,8 +78,6 @@ function Annotations ({lineId}) {
                     <button className= 'content-button' onClick={()=> dispatch(lineActions.removeAnnotation(annotation.id, lineId))}>Delete Annotation</button>: null
                 }
             </div>
-            <Comment prop={prop}/>
-            <CommentFormModal prop={prop} />
         </div>
     )
 

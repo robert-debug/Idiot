@@ -2,16 +2,18 @@
     font-size: 13px;
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
+    flex-direction: column;
     padding: auto;
     align-content: center;
     margin-top: 10px;
+    width: 90%;
     
 }
 .comment-span{
     margin: 10px;
 }
 .content-button{
-    width: 80px;
-    height: 35px;
+    width: 60px;
+    height: 30px;
+    font-size: 10px;
 }

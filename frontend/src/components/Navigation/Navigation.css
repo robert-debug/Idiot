@@ -61,6 +61,9 @@ a:active{
     color: black;
     background-color: whitesmoke;
 }
+.logo{
+    height: 39px;
+}
 /* body{
     display:flex;
     flex-direction: column;

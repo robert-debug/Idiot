@@ -14,10 +14,7 @@ router.get('/tracks/:id(\\d+)', asyncHandler( async (req, res) => {
             trackId : id
         },
         include: {
-                model: Annotation,
-                    include: {
-                        model: Comment
-                    }
+                model: Annotation
             }
     }
     );

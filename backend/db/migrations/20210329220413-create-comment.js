@@ -16,13 +16,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Users'}
       },
-      annotationId: {
+      trackId: {
         type: Sequelize.INTEGER,
-        references: { 
-          model: 'Annotations'        
-        },
-        onDelete: 'CASCADE',
-        hooks:'true'
+        references: { model: 'Tracks'},
       },
       createdAt: {
         allowNull: false,

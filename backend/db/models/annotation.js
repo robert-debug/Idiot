@@ -8,8 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   Annotation.associate = function(models) {
     // associations can be defined here
     Annotation.belongsTo(models.Line, { foreignKey: 'lineId' }),
-    Annotation.belongsTo(models.User, { foreignKey: 'userId'}),
-    Annotation.hasMany(models.Comment, { foreignKey: 'annotationId', onDelete: 'cascade', hooks: 'true' })
+    Annotation.belongsTo(models.User, { foreignKey: 'userId'})
   };
   return Annotation;
 };
