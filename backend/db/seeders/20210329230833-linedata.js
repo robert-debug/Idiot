@@ -13,34 +13,13 @@ module.exports = {
       }], {});
     */
       return queryInterface.bulkInsert('Lines', [
+        
         {
           ordernum: 0,
-          linetext: 'track 1 test',
-          trackId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          ordernum: 1,
-          linetext: 'track 1 test',
-          trackId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          ordernum: 2,
-          linetext: 'track 1 test',
-          trackId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          ordernum: 3,
-          linetext: 'track 1 test',
-          trackId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
+          linetext:"I'm all lost in the supermarket", 
+          trackId: 1, 
+          createdAt: "2021-06-04 10:10:32.766-04", 
+          updatedAt:"2021-06-04 10:10:32.766-04"},
         {
           ordernum: 0,
           linetext: 'track 2 test',
