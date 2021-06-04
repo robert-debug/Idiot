@@ -126,9 +126,9 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          title: 'Blink',
+          title: 'I Miss You',
           artist: 'Blink-182',
-          album: 'Enema of the State',
+          album: 'Blink-182',
           createdAt: new Date(),
           updatedAt: new Date()
         },
