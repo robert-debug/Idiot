@@ -14,7 +14,7 @@ console.log('----prop---', editProp )
   console.log(prop)
     return(
         <>
-            <button className= 'content-button' onClick={() => setShowModal(true)}>Edit Annotation</button>
+            <button className= 'annotation-button' onClick={() => setShowModal(true)}>Edit Annotation</button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <EditAnnotationForm props={prop}  />

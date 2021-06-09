@@ -27,11 +27,12 @@ function EditCommentForm({props}) {
     <>
     <p>Edit your wisdom!</p>
     <form className='form' onSubmit={handleSubmit}>
+    { errors.length === 0 ? null :
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
-      </ul>
+      </ul>}
       <label>
         <textarea
           className='text-area'

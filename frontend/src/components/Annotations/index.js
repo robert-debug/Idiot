@@ -75,7 +75,7 @@ function Annotations ({lineId}) {
                 }
                 {
                     user.id === annotation.userId?
-                    <button className= 'content-button' onClick={()=> dispatch(lineActions.removeAnnotation(annotation.id, lineId))}>Delete Annotation</button>: null
+                    <button className= 'annotation-button' onClick={()=> dispatch(lineActions.removeAnnotation(annotation.id, lineId))}>Delete Annotation</button>: null
                 }
             </div>
         </div>

@@ -26,14 +26,16 @@ function CommentForm({ props }) {
 
   return (
     <>
-    <p>Do you know what opinions are like? Everyone has one.</p>
+    <p id='knowledge'>Do you know what opinions are like? Everyone has one.</p>
     <form className='form' onSubmit={handleSubmit}>
+      { errors.length === 0 ? null :
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
-        </ul>
+        </ul>}
        <label>
+        </label>
           <textarea
             className='text-area'
            value={body}
@@ -42,8 +44,7 @@ function CommentForm({ props }) {
            onChange={(e) => setBody(e.target.value)}
            required
           />
-        </label>
-        <button type="submit">Save</button>
+        <button className='save-button' type="submit">Save</button>
       </form>
     </>
   );

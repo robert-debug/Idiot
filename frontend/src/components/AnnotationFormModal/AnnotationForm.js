@@ -22,14 +22,14 @@ function AnnotationForm({ lineId }) {
 
   return (
     <>
-      <p>Drop some knowledge on us!</p>
+      <p id='knowledge'>Drop some knowledge on us!</p>
       <form className='form' onSubmit={handleSubmit}>
+        { errors.length === 0 ? null :
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
-        </ul>
-        <label>
+        </ul>}
           <textarea className='text-area'
             value={body}
             cols='60'
@@ -37,8 +37,7 @@ function AnnotationForm({ lineId }) {
             onChange={(e) => setBody(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Save</button>
+        <button className='save-button' type="submit">Save</button>
       </form>
     </>
   );

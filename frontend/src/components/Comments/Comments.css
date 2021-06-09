@@ -47,3 +47,8 @@
     transition: all 0.2s;
     cursor:pointer;
 }
+
+textarea{
+    border-radius: 5px;
+    padding: 1em;
+}
