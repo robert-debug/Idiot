@@ -36,7 +36,7 @@ function ProfileButton({ user }) {
       {showMenu && (
         <>
           <div className='name'>{user.username}</div>
-          <button onClick={logout}>Log Out</button>
+          <button id='logout-button' onClick={logout}>Logout</button>
         </>
       )}
     </>

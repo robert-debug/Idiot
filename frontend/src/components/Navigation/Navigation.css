@@ -4,9 +4,8 @@
     flex-direction: row; 
     justify-content: space-between;
     background-color: #FF0080;
-    height:15%;
+    height:20%;
     margin:0;
-    padding: 0;
     
 }
 #signup-link{
@@ -27,8 +26,8 @@
 .nav-button{
     display:inline-block;
     padding:0.35em 1.2em;
-    margin: 0 0.3em 0.3em 0;
-    border: .1em, solid, whitesmoke;
+    margin: 1em;
+    border: 1px, solid, whitesmoke;
     border-radius:0.12em;
     box-sizing: border-box;
     font-weight: 300;
@@ -62,7 +61,48 @@ a:active{
     background-color: whitesmoke;
 }
 .logo{
-    height: 39px;
+    height: 3.9em;
+}
+#login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#login-form > label{
+    margin-bottom: .3em;
+}
+#login-form > input{
+    margin-bottom: .3em;
+}
+#login-button-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#login-button-div > button{
+    border: none;
+    border-radius:0.12em;
+    background-color: #FF0080;
+    color: whitesmoke;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: .5em;
+    width: 4em;
+    height: 2em;
+    transition: all 0.2s;
+}
+#logout-button{
+    border: none;
+    border-radius:0.12em;
+    background-color: #FF0080;
+    color: whitesmoke;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: .5em;
+    width: 4em;
+    height: 2em;
+    transition: all 0.2s;
+    cursor:pointer;
 }
 /* body{
     display:flex;
