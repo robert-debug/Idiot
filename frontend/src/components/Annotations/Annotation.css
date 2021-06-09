@@ -20,5 +20,8 @@
 .login-idiot-user{
     font-size: 13px;
     background-color: #FF0080;
+    color: whitesmoke;
     align-self: baseline;
+    border-radius: 5px;
+    padding: .5em;
 }

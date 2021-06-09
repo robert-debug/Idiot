@@ -35,6 +35,7 @@ const Comments = ({ prop }) => {
     
     return(
         <div className='Comments'>
+            <h3>Comments</h3>
             { comments.map( (comment, i )=>{
 
                 const prop = {body: comment.body, commentId : comment.id, userId: comment.userId};
@@ -43,10 +44,10 @@ const Comments = ({ prop }) => {
                             <span className='comment-span' key={comment.body}>{comment.body}</span>
                             {
                                 user.id === comment.userId?
-                                <>
+                                <div class='comment-button-div'>
                                 <EditCommentForm key={i} prop={prop} />
                                 <button className= 'content-button' onClick={()=> dispatch(commentActions.removeComment(comment.id))}>Delete</button>
-                                </>
+                                </div>
                                 :null
                             }
                         </div>

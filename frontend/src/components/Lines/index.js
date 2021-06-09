@@ -21,7 +21,7 @@ function LineList ({line}) {
     return(
         <div className='lyric'>
                 <div key={line.id} className='line-div'>
-                    <p onClick={clickLine} onSelect={clickLine} className='line' id={line.Annotation !== null ? 'background': null}>{line.linetext}</p>
+                    <p onMouseUp={clickLine} className='line' id={line.Annotation !== null ? 'background': null}>{line.linetext}</p>
 
                     {
                         annotationVisibility?

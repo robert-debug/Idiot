@@ -6,14 +6,44 @@
     padding: auto;
     align-content: center;
     margin-top: 10px;
-    width: 90%;
-    
+    margin-left: 2em;
+    margin-bottom: 2em;
+    width: 35em;
+    border: 1px solid;
+    border-color: grey;
+    padding: 1em;
+    border-radius: 5px;
 }
 .comment-span{
     margin: 10px;
+    width: 30em
 }
 .content-button{
-    width: 60px;
-    height: 30px;
-    font-size: 10px;
+    border: none;
+    border-radius:0.12em;
+    background-color: #FF0080;
+    color: whitesmoke;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: .5em;
+    margin-right: 3em;
+    width: 4em;
+    height: 2em;
+    transition: all 0.2s;
+    cursor:pointer;
+}
+.comment-button{
+    border: none;
+    border-radius:0.12em;
+    background-color: #FF0080;
+    color: whitesmoke;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: 1em;
+    margin-left: 46.85%;
+    margin-bottom: 2em;
+    width: 6em;
+    height: 2em;
+    transition: all 0.2s;
+    cursor:pointer;
 }

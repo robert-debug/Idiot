@@ -9,7 +9,15 @@
     justify-content: flex-start;
 }
 #background{
+    background-color: grey;
+    color: whitesmoke;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#background:hover{
     background-color: #FF0080;
     color: whitesmoke;
     padding: 5px;
+    cursor: pointer;
 }

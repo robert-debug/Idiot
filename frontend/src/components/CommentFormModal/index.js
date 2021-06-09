@@ -11,7 +11,7 @@ function CommentFormModal({ trackId }) {
 
     return(
         <>
-            <button className= 'content-button' onClick={() => setShowModal(true)}>Comment</button>
+            <button className= 'comment-button' onClick={() => setShowModal(true)}>Comment</button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <CommentForm className='new-comment-form' props={{trackId, setShowModal}}  />
