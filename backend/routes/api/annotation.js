@@ -20,7 +20,6 @@ router.get('/line/:id(\\d+)', asyncHandler( async (req, res) => {
      }
   }
   );
-  //console.log(tracks)
   return res.json(annotations)
 }));
 
@@ -39,7 +38,6 @@ router.post(
     '/',
     validateAnnotation,
     asyncHandler(async (req, res) => {
-      console.log(req.body.body)
       const { body, userId, lineId } = req.body;
       const annotation = await Annotation.create({
         body,
@@ -57,12 +55,8 @@ router.put(
     '/:annotationId(\\d+)', 
     // validateAnnotation, 
     asyncHandler(async (req, res) =>{
-      // console.log(req, res)
       const annotationId = await req.params.annotationId;
-      console.log(annotationId)
       const annotation = await Annotation.findByPk(annotationId);
-      console.log(annotation.lineId)
-      console.log(req.body)
 
       const body = req.body;
       annotation.body = body.body;

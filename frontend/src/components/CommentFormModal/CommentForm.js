@@ -4,10 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import './CommentForm.css'
 
 function CommentForm({ props }) {
-  console.log(props)
   const trackId = props.trackId 
   const setShowModal  = props.setShowModal;
-  console.log(trackId)
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
   const [body, setBody] = useState("");

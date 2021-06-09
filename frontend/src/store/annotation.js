@@ -33,7 +33,7 @@ export const getAnnotations = (id) => async dispatch => {
     const response = await fetch(`/api/annotations/line/${id}`);
     if(response.ok) {
         const list = await response.json();
-        console.log(list)
+
         dispatch(getList(list));
     }
 };
@@ -48,7 +48,7 @@ export const getOneAnnotation = id => async dispatch => {
 };
 
 export const createAnnotation = data => async dispatch => {
-    console.log(data)
+
     const response = await csrfFetch(`/api/annotations`, {
         method: 'post',
         body: JSON.stringify(data)
@@ -59,7 +59,7 @@ export const createAnnotation = data => async dispatch => {
     }
 }
 export const updateAnnotation = data => async dispatch => {
-    console.log(data)
+
     const response = await csrfFetch(`/api/annotations/${data.id}`, {
         method: 'put',
         body: JSON.stringify(data)
@@ -71,7 +71,7 @@ export const updateAnnotation = data => async dispatch => {
 }
 
 export const removeAnnotation = annotationId => async dispatch => {
-    console.log(annotationId)
+
     const response = await csrfFetch(`/api/annotations/${annotationId}`, {
         method: 'DELETE',
     })

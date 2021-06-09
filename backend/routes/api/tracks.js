@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get('', asyncHandler( async (req, res) => {
     const tracks = await Track.findAll();
-    //console.log(tracks)
     return res.json(tracks)
 }));
 

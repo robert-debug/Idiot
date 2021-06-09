@@ -29,11 +29,11 @@ const deleteComment = (commentId) => {
 const initialState = {};
 
 export const getComments = (id) => async dispatch => {
-    console.log(id)
+
     const response = await fetch(`/api/comments/tracks/${id}`);
     if(response.ok) {
         const list = await response.json();
-        console.log(list)
+
         dispatch(getList(list));
     }
 };
@@ -81,7 +81,7 @@ export const removeComment = commentId => async dispatch => {
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case COMMENT_CRU: {
-            console.log('--------------',action.comment.comment)
+
             return {
                 ...state,
                 [action.comment.comment.id] : action.comment.comment
@@ -90,7 +90,7 @@ const commentReducer = (state = initialState, action) => {
         case COMMENT_D: {
             const newState = {...state};
             const commentNum = action.commentId
-            console.log(newState)
+
             delete newState[commentNum];
             return newState;
         }

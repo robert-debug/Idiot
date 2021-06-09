@@ -13,7 +13,6 @@ import {getLines} from '../../store/line';
 import './Annotation.css'
 
 function Annotations ({lineId}) {
-    console.log(lineId)
     const {trackId} = useTrack();
     const editProp={}
     const dispatch = useDispatch();
@@ -37,16 +36,13 @@ function Annotations ({lineId}) {
         editProp.annotationId = annotation.id;
         prop.annotationId = annotation.id;
         prop.lineId = lineId;
-        // console.log(annotation)
-        // console.log(editProp)
         for (let key in commentObjects) {
             if (commentObjects[key].annotationId === annotation.id){
                 commentArray.push(commentObjects[key]);
             }
         }
     }
-    console.log('editProp', editProp)
-    console.log(prop)
+
     if (!annotation && !user) {
         return(
             <div id='please-Login-div'>
@@ -64,7 +60,6 @@ function Annotations ({lineId}) {
         )
     }
 
-    console.log(user)
     return(
         <div className='Annotation'>
             <span className='annotation-text'>{annotation.body}</span>

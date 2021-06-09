@@ -58,3 +58,17 @@
     cursor:pointer;
 
 }
+.new-annotation-button{
+    border: none;
+    border-radius:0.12em;
+    background-color: #FF0080;
+    color: whitesmoke;;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 1em;
+    width: 12em;
+    height: 2em;
+    transition: all 0.2s;
+    cursor:pointer;
+    margin-top: .1em;
+}

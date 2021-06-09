@@ -15,7 +15,6 @@ function LineList ({line}) {
         dispatch(lineActions.getLines(trackId));
     },[dispatch]);
     
-    // console.log(lines)
 
     
     return(

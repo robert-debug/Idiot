@@ -15,7 +15,6 @@ const validateComment = [
 
 router.get('/tracks/:id(\\d+)', asyncHandler( async (req, res) => {
   const id = await req.params.id;
-  console.log(id)
   const comments = await Comment.findAll(
     {
       where: {
@@ -23,7 +22,6 @@ router.get('/tracks/:id(\\d+)', asyncHandler( async (req, res) => {
       }
    }
   );
-  //console.log(tracks)
   return res.json(comments)
 }));
 
@@ -55,7 +53,6 @@ router.put(
     asyncHandler(async (req, res) =>{
       const commentId = await req.params.commentId;
       const comment = await Comment.findByPk(commentId);
-      console.log('----------------', req.body)
       const body  = req.body.body;
       comment.body = body;
       await comment.save();
@@ -67,7 +64,6 @@ router.delete(
     '/:commentId(\\d+)',
     asyncHandler(async (req, res) =>{
         const commentId = req.params.commentId;
-        console.log(commentId)
         const comment = await Comment.findByPk(commentId);
         await comment.destroy();
         return res.json({'result':'destroyed'})

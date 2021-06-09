@@ -5,13 +5,13 @@ import EditAnnotationForm from './EditAnnotationForm'
 
 
 function EditAnnotationFormModal( { editProp } ) {
-console.log('----prop---', editProp )
+
   const body = editProp.body
   const annotationId = editProp.annotationId
   const [showModal, setShowModal] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
   const prop = { body, annotationId, setShowModal }
-  console.log(prop)
+
     return(
         <>
             <button className= 'annotation-button' onClick={() => setShowModal(true)}>Edit Annotation</button>

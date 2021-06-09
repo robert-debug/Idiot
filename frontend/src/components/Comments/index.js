@@ -13,7 +13,7 @@ const Comments = ({ prop }) => {
         return state.comment
     })
     const comments = Object.values(commentObjects);
-    console.log(comments)
+
     let user = useSelector(state => state.session.user)
     if(!user) user = {'id' : 0}
     useEffect(()=>{

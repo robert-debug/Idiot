@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 function EditCommentForm({props}) {
-  console.log(props.prop)
+
   const setShowModal = props.setShowModal
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)

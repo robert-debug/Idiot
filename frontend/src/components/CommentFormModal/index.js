@@ -4,7 +4,7 @@ import CommentForm from './CommentForm';
 import { useSelector } from "react-redux";
 
 function CommentFormModal({ trackId }) {
-    console.log(trackId)
+
   const [showModal, setShowModal] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
   if(sessionUser) {

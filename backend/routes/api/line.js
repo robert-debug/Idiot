@@ -18,7 +18,6 @@ router.get('/tracks/:id(\\d+)', asyncHandler( async (req, res) => {
             }
     }
     );
-    //console.log(tracks)
     return res.json(lines)
 }));
 

@@ -14,7 +14,7 @@ const getList = list => ({
 })
 
 const annotateTrack = (annotation) => {
-    console.log(annotation)
+
     return {
       type: ANNOTATION_CRU,
       annotation: annotation,
@@ -55,7 +55,7 @@ export const getOneLine = id => async dispatch => {
     }
 };
 export const removeAnnotation = (annotationId, lineId) => async dispatch => {
-    console.log(annotationId)
+
     const response = await csrfFetch(`/api/annotations/${annotationId}`, {
         method: 'DELETE',
     })
@@ -65,7 +65,7 @@ export const removeAnnotation = (annotationId, lineId) => async dispatch => {
 
 }
 export const createAnnotation = data => async dispatch => {
-    console.log(data)
+
     const response = await csrfFetch(`/api/annotations`, {
         method: 'post',
         body: JSON.stringify(data)
@@ -80,10 +80,10 @@ export const updateAnnotation = (data) => async dispatch => {
         method: 'put',
         body: JSON.stringify({body : data.body})
     });
-    console.log(response)
+
     if (response.ok) {
         const annotation = await response.json();
-        console.log(annotation)
+
         dispatch(annotateTrack(annotation));
     }
 }
@@ -104,7 +104,7 @@ const lineReducer = (state = initialState, action) => {
             const newState = {
                 ...state
             }
-            console.log(action.annotation)
+
             const target = action.annotation.annotation.lineId;
             newState[target].Annotation = action.annotation.annotation;
             return newState;
@@ -122,8 +122,7 @@ const lineReducer = (state = initialState, action) => {
             const newState = {
                 ...state
             }
-            console.log(newState)
-            console.log(action)
+
             delete newState[action.payload].Annotation
             return newState;
         } 

@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 function TrackDetail () {
     const trackId = useParams().id;
-    console.log(trackId)
+    
     const dispatch = useDispatch();
     let track = useSelector(state => state.track[trackId]);
     useEffect(() => {
