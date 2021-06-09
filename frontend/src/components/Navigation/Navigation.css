@@ -64,6 +64,7 @@ a:active{
 }
 .logo{
     height: 3.9em;
+    cursor:pointer;
 }
 #login-form{
     display: flex;
