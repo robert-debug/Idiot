@@ -7,13 +7,12 @@ import './Comments.css'
 
 const Comments = ({ prop }) => {
     const trackId = prop
-    const deleteImage = require('../../assets/delete.png')
     const dispatch = useDispatch();
     const commentObjects= useSelector(state => {
         return state.comment
     })
     const comments = Object.values(commentObjects);
-
+    comments.pop()
     let user = useSelector(state => state.session.user)
     if(!user) user = {'id' : 0}
     useEffect(()=>{
@@ -32,7 +31,7 @@ const Comments = ({ prop }) => {
         )
     }
 
-    
+    console.log(comments)
     return(
         <div className='Comments'>
             <h3>Comments</h3>
@@ -41,6 +40,7 @@ const Comments = ({ prop }) => {
                 const prop = {body: comment.body, commentId : comment.id, userId: comment.userId};
                 return(
                         <div key={comment.id} className='comment-div'>
+                            {console.log(comment.id)}
                             <span className='comment-span' key={comment.body}>{comment.body}</span>
                             {
                                 user.id === comment.userId?
