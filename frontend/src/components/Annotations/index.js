@@ -63,6 +63,7 @@ function Annotations ({lineId}) {
     return(
         <div className='Annotation'>
             <span className='annotation-text'>{annotation.body}</span>
+            {user ?
             <div className='button-box'>
                 {
                     user.id === annotation.userId?
@@ -72,7 +73,7 @@ function Annotations ({lineId}) {
                     user.id === annotation.userId?
                     <button className= 'annotation-button' onClick={()=> dispatch(lineActions.removeAnnotation(annotation.id, lineId))}>Delete Annotation</button>: null
                 }
-            </div>
+            </div> : null}
         </div>
     )
 
