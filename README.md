@@ -1,5 +1,8 @@
+![banner](https://github.com/robert-debug/Idiot/frontend/src/assets/Idiot.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 # Idiot
-Name pending...
+Idiot is a clone a Genius. It is an app that allows user to annotate lines of song lyrics and comment on tracks.
+
 ## Feature List
 
 ### Features for the minimum viable product include:
@@ -13,6 +16,7 @@ Name pending...
 * Search by Track name, Artist, and lyrics
 * Artist Pages
 * Tags
+* AWS storage
 * Annotations highlighting in lyrics
 
 # DATABASE SCHEMA
