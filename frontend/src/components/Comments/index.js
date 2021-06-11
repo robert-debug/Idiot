@@ -40,7 +40,6 @@ const Comments = ({ prop }) => {
                 const prop = {body: comment.body, commentId : comment.id, userId: comment.userId};
                 return(
                         <div key={comment.id} className='comment-div'>
-                            {console.log(comment.id)}
                             <span className='comment-span' key={comment.body}>{comment.body}</span>
                             {
                                 user.id === comment.userId?
