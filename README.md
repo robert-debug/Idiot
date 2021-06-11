@@ -1,4 +1,4 @@
-![banner](https://github.com/robert-debug/Idiot/frontend/src/assets/Idiot.png)
+![banner](https://github.com/robert-debug/Idiot/blob/master/frontend/src/assets/Idiot.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 # Idiot
 Idiot is a clone a Genius. It is an app that allows user to annotate lines of song lyrics and comment on tracks.
