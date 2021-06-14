@@ -63,6 +63,7 @@ function Annotations ({lineId}) {
     return(
         <div className='Annotation'>
             <span className='annotation-text'>{annotation.body}</span>
+            <span className='annotation-text-name'>{`by ${annotation.User.username}`}</span>
             {user ?
             <div className='button-box'>
                 {

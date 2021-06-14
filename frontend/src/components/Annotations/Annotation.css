@@ -58,6 +58,9 @@
     cursor:pointer;
 
 }
+.annotation-text-name{
+    margin:.3em;
+}
 .new-annotation-button{
     border: none;
     border-radius:0.12em;
