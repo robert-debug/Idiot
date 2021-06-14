@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Line, Annotation, Comment } = require('../../db/models');
+const { Line, Annotation, Comment, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -14,8 +14,11 @@ router.get('/tracks/:id(\\d+)', asyncHandler( async (req, res) => {
             trackId : id
         },
         include: {
-                model: Annotation
-            }
+                model: Annotation,
+                include: {
+                    model: User
+                }
+            } 
     }
     );
     return res.json(lines)

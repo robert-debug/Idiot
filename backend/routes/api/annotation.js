@@ -30,7 +30,7 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
   const annotation = await Track.findByPk(id, 
     {
       include: {
-          model: Comment
+          model: User
       }
    }
    );

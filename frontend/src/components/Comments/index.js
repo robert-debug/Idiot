@@ -41,6 +41,7 @@ const Comments = ({ prop }) => {
                 return(
                         <div key={comment.id} className='comment-div'>
                             <span className='comment-span' key={comment.body}>{comment.body}</span>
+                            <span className='comment-span'>{`by ${comment.User.username}`}</span>
                             {
                                 user.id === comment.userId?
                                 <div class='comment-button-div'>
