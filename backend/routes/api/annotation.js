@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Annotation, Comment } = require('../../db/models');
+const { Annotation, Comment, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
@@ -17,6 +17,8 @@ router.get('/line/:id(\\d+)', asyncHandler( async (req, res) => {
   {
      where: {
         lineId: id
+     }, include:{
+        model: User
      }
   }
   );
