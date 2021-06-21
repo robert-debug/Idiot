@@ -75,7 +75,7 @@ module.exports = {
           trackId: 6,
           createdAt: new Date(),
           updatedAt: new Date()
-        },
+        }
         
     ], {});
   },

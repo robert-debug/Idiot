@@ -14,23 +14,44 @@ module.exports = {
     */
       return queryInterface.bulkInsert('Annotations', [
         {
-          body: 'user 1 line 1',
+          body: 'Something cool about this lyric',
           userId: 1,
           lineId: 1,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          body: 'user 1 line 2',
+          body: 'pretty pretty cool.',
           userId: 1,
           lineId: 2,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          body: 'user 2 line 3',
+          body: 'A bespoke hand crafted annotation.',
           userId: 2,
           lineId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          body: 'A bespoke hand crafted annotation.',
+          userId: 3,
+          lineId: 57,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          body: 'A bespoke hand crafted annotation.',
+          userId: 3,
+          lineId: 400,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          body: 'A bespoke hand crafted annotation.',
+          userId: 3,
+          lineId: 1000,
           createdAt: new Date(),
           updatedAt: new Date()
         }
