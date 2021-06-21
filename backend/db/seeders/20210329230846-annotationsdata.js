@@ -51,7 +51,28 @@ module.exports = {
         {
           body: 'A bespoke hand crafted annotation.',
           userId: 3,
-          lineId: 1000,
+          lineId: 600,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          body: 'A bespoke hand crafted annotation.',
+          userId: 3,
+          lineId: 30,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          body: 'A bespoke hand crafted annotation.',
+          userId: 2,
+          lineId: 90,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          body: 'A bespoke hand crafted annotation.',
+          userId: 2,
+          lineId: 200,
           createdAt: new Date(),
           updatedAt: new Date()
         }
