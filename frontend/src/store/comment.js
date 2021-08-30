@@ -85,6 +85,10 @@ export const removeComment = commentId => async dispatch => {
 
 }
 
+export const resetComment = () => async dispatch => {
+    dispatch(newPage)
+}
+
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case COMMENT_CRU: {
@@ -120,6 +124,9 @@ const commentReducer = (state = initialState, action) => {
                     ...action.comment
                 }
             }
+        }
+        case NEW_PAGE: {
+            return null;
         }
         default:
             return state;

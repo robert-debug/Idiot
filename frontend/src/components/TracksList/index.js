@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { getTracks } from '../../store/track';
+import { resetComment } from '../../store/comment'
 import TrackDetail from './TrackDetail';
 import { NavLink } from 'react-router-dom';
 import { useTrack } from '../../context/Track';
@@ -15,6 +16,7 @@ function TrackList () {
     })
     useEffect(()=>{
         dispatch(getTracks());
+        dispatch(resetComment())
     },[dispatch]);
     if (!tracks) return null;
     const clickHandler = (trackId) => {
