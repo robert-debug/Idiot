@@ -8,12 +8,11 @@ import './Comments.css'
 const Comments = ({ prop }) => {
     const trackId = prop
     const dispatch = useDispatch();
-    const commentObjects= useSelector(state => {
-        return state.comment
+    const comments= useSelector(state => {
+        return state.comment.list
     })
-    console.log(commentObjects)
-    const comments = commentObjects
-    comments.pop()
+    // const comments = commentObjects
+    // comments.pop()
     let user = useSelector(state => state.session.user)
     if(!user) user = {'id' : 0}
     useEffect(()=>{
