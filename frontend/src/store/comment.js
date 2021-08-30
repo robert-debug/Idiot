@@ -4,6 +4,7 @@ const COMMENT_CRU = 'comment/CRU';
 const COMMENT_D = 'comment/DELETE'
 const LOAD = 'comment/LIST';
 const ONE = 'comment/ONE';
+const NEW_PAGE = 'comment/newPage'
 
 const getList = list => ({
     type: LOAD,
@@ -24,6 +25,12 @@ const deleteComment = (commentId) => {
     return {
         type: COMMENT_D,
         commentId
+    }
+}
+
+const newPage = () =>{
+    return {
+        type: NEW_PAGE
     }
 }
 const initialState = {};
