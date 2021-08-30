@@ -36,7 +36,7 @@ const newPage = () =>{
 const initialState = {};
 
 export const getComments = (id) => async dispatch => {
-
+    dispatch(newPage)
     const response = await fetch(`/api/comments/tracks/${id}`);
     if(response.ok) {
         const list = await response.json();
@@ -126,7 +126,9 @@ const commentReducer = (state = initialState, action) => {
             }
         }
         case NEW_PAGE: {
-            return null;
+            return {
+                list:[]
+            };
         }
         default:
             return state;

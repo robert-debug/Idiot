@@ -16,8 +16,10 @@ function TrackList () {
     })
     useEffect(()=>{
         dispatch(getTracks());
-        dispatch(resetComment())
     },[dispatch]);
+    useEffect(()=>{
+        dispatch(resetComment())
+    }, [])
     if (!tracks) return null;
     const clickHandler = (trackId) => {
         setTrackId(trackId)

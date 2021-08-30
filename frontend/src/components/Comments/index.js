@@ -11,7 +11,8 @@ const Comments = ({ prop }) => {
     const commentObjects= useSelector(state => {
         return state.comment
     })
-    const comments = Object.values(commentObjects);
+    console.log(commentObjects)
+    const comments = commentObjects
     comments.pop()
     let user = useSelector(state => state.session.user)
     if(!user) user = {'id' : 0}
