@@ -33,7 +33,7 @@ const newPage = () =>{
         type: NEW_PAGE
     }
 }
-const initialState = {};
+const initialState = {list:[]};
 
 export const getComments = (id) => async dispatch => {
     dispatch(newPage)
@@ -92,7 +92,8 @@ export const resetComment = () => async dispatch => {
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case COMMENT_CRU: {
-
+            const list = state.list
+            list.push(action.comment.comment)
             return {
                 ...state,
                 [action.comment.comment.id] : action.comment.comment
