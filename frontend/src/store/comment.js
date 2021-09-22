@@ -101,20 +101,24 @@ const commentReducer = (state = initialState, action) => {
         }
         case COMMENT_D: {
             const newState = {...state};
-            const commentNum = action.commentId
-
+            const commentNum = action.commentId;
+            const list =  state.list;
+            const newList = list.filter(comment => comment['id'] !== action.commentId)
             delete newState[commentNum];
-            return newState;
+            return {
+                ...newState,
+                list: newList
+            }
         }
         case LOAD: {
             const allComments = {};
+            const list = action.list
             action.list.forEach(comment => {
                 allComments[comment.id] = comment;
             });
             return {
                 ...allComments,
-                ...state,
-                list: action.list
+                list: list
             }
         }
         case ONE: {
