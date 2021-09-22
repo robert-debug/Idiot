@@ -14,7 +14,11 @@ const Comments = ({ prop }) => {
     const commentLength = useSelector(state => {
         return state.comment.list.length
     })
-    const sessionUser = useSelector(state => state.session.user.username)
+    const sessionUser = useSelector(state => {
+        if(!state.session.user){
+            return null
+        }
+        return state.session.user.username})
     // const comments = commentObjects
     // comments.pop()
     let user = useSelector(state => state.session.user)

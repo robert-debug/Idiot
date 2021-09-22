@@ -20,7 +20,12 @@ function Annotations ({lineId}) {
     const annotation = useSelector(state => {
         return state.line[lineId].Annotation
     })
-    const sessionUser = useSelector(state => state.session.user.username)
+    const sessionUser = useSelector(state => {
+        if(!state.session.user){
+            return null
+        }
+        return state.session.user.username
+    })
     const commentObjects= useSelector(state => {
         return state.comment
     })
