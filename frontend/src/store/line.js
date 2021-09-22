@@ -96,8 +96,8 @@ const lineReducer = (state = initialState, action) => {
                 allLines[line.id] = line;
             });
             return {
-                ...allLines
-                
+                ...allLines,
+                list: action.list
             }
         }
         case ANNOTATION_CRU:{
