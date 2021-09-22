@@ -11,13 +11,17 @@ const Comments = ({ prop }) => {
     const comments= useSelector(state => {
         return state.comment.list
     })
+    const commentLength = useSelector(state => {
+        return state.comment.list.length
+    })
+    const sessionUser = useSelector(state => state.session.user.username)
     // const comments = commentObjects
     // comments.pop()
     let user = useSelector(state => state.session.user)
     if(!user) user = {'id' : 0}
     useEffect(()=>{
         dispatch(commentActions.getComments(trackId));
-    }, [dispatch]);
+    }, [dispatch, commentLength]);
  
     if (!comments && !user) {
         return null;
@@ -31,17 +35,16 @@ const Comments = ({ prop }) => {
         )
     }
 
-    console.log(comments)
     return(
         <div className='Comments'>
             <h3>Comments</h3>
             { comments.map( (comment, i )=>{
-
+                console.log(comment)
                 const prop = {body: comment.body, commentId : comment.id, userId: comment.userId};
                 return(
                         <div key={comment.id} className='comment-div'>
                             <span className='comment-span' key={comment.body}>{comment.body}</span>
-                            <span className='comment-span'>{`by ${comment.User.username}`}</span>
+                            <span className='comment-span'>{`by ${comment.User ? comment.User.username : sessionUser}`}</span>
                             {
                                 user.id === comment.userId?
                                 <div class='comment-button-div'>
