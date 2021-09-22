@@ -39,7 +39,6 @@ const Comments = ({ prop }) => {
         <div className='Comments'>
             <h3>Comments</h3>
             { comments.map( (comment, i )=>{
-                console.log(comment)
                 const prop = {body: comment.body, commentId : comment.id, userId: comment.userId};
                 return(
                         <div key={comment.id} className='comment-div'>

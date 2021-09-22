@@ -60,7 +60,6 @@ export const createComment = data => async dispatch => {
     });
     if (response.ok) {
         const comment = await response.json();
-        console.log(comment)
         dispatch(commentAnnotation(comment));
     }
 }
