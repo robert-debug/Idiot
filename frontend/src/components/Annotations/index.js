@@ -20,6 +20,7 @@ function Annotations ({lineId}) {
     const annotation = useSelector(state => {
         return state.line[lineId].Annotation
     })
+    const sessionUser = useSelector(state => state.session.user.username)
     const commentObjects= useSelector(state => {
         return state.comment
     })
@@ -63,7 +64,7 @@ function Annotations ({lineId}) {
     return(
         <div className='Annotation'>
             <span className='annotation-text'>{annotation.body}</span>
-            <span className='annotation-text-name'>{`by ${annotation.User.username}`}</span>
+            <span className='annotation-text-name'>{`by ${annotation.User ? annotation.User.username :  sessionUser}`}</span>
             {user ?
             <div className='button-box'>
                 {
