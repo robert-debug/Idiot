@@ -11,14 +11,12 @@ function LineList ({line}) {
     const [annotationVisibility, setAnnotationVisibility] = useState(false)
     const clickLine = () => (setAnnotationVisibility(!annotationVisibility));
 
-    useEffect(()=>{
-        dispatch(lineActions.getLines(trackId));
-    },[dispatch]);
-    
 
     
     return(
         <div className='lyric'>
+            {
+                line.linetext ?
                 <div key={line.id} className='line-div'>
                     <p onMouseUp={clickLine} className='line' id={line.Annotation !== null ? 'background': null}>{line.linetext}</p>
 
@@ -27,7 +25,8 @@ function LineList ({line}) {
                         <Annotation lineId={line.id}/> : null
 
                     }
-                </div>
+                </div> : null
+            }
         
          
          

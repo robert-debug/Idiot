@@ -48,7 +48,6 @@ export const getLines = (trackId) => async dispatch => {
 
 export const getOneLine = id => async dispatch => {
     const response = await fetch(`/api/lines/${id}`);
-
     if (response.ok) {
         const line = await response.json();
         dispatch(getOne(line));
@@ -95,9 +94,10 @@ const lineReducer = (state = initialState, action) => {
             action.list.forEach(line => {
                 allLines[line.id] = line;
             });
+            const list = action.list.sort((a, b) => a.ordernum - b.ordernum)
             return {
                 ...allLines,
-                list: action.list
+                list: list
             }
         }
         case ANNOTATION_CRU:{

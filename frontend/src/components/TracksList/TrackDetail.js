@@ -5,7 +5,7 @@ import { getOneTrack } from '../../store/track';
 import Lines from '../Lines/index';
 import Comments from '../Comments/index'
 import { useSelector, useDispatch } from "react-redux";
-
+import * as lineActions from '../../store/line';
 function TrackDetail () {
     const trackId = useParams().id;
     
@@ -13,6 +13,7 @@ function TrackDetail () {
     let track = useSelector(state => state.track[trackId]);
     useEffect(() => {
         dispatch(getOneTrack(trackId))
+        dispatch(lineActions.getLines(trackId));
     }, [])
     const linesObjects = useSelector(state => {
         return state.line

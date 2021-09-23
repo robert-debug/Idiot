@@ -35,7 +35,6 @@ function Annotations ({lineId}) {
     })
     useEffect(()=>{
         dispatch(annotationActions.getAnnotations(lineId));
-        dispatch(getLines(trackId));
     },[dispatch]);
     if(annotation){
         editProp.body = annotation.body;
